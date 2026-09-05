@@ -1,0 +1,521 @@
+{
+  "observedAt": "2026-09-05T19:39:00.869Z",
+  "method": "Existing browser point-in-polygon classifier; exploratory haversine nearest points with mean Earth radius 6371008.8 m. No production radius selected.",
+  "inputs": {
+    "data/reference/hk-place-points.geojson": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+    "data/reference/hk-place-names.json": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33",
+    "data/reference/hk-districts.geojson": "e145cc41230d8215dfb0a797230a0c9671827c018ba608bfc3086966da4735c8",
+    "experiments/photo-import/districts.mjs": "e4a9a0b651cb38344fe1269dc2fd9873f2550a24d5b3d2731f13566592f98f79"
+  },
+  "pointDistrictStatus": {
+    "assigned": 2706
+  },
+  "districtCodeCrosswalk": {
+    "CW": "A",
+    "WC": "B",
+    "EST": "C",
+    "STH": "D",
+    "YTM": "E",
+    "SSP": "F",
+    "KLC": "G",
+    "WTS": "H",
+    "KT": "J",
+    "TW": "K",
+    "TM": "L",
+    "YL": "M",
+    "NTH": "N",
+    "TP": "P",
+    "SK": "Q",
+    "ST": "R",
+    "KC": "S",
+    "ILD": "T"
+  },
+  "districtMismatchCount": 13,
+  "districtMismatches": [
+    {
+      "id": "1045",
+      "name": "Ma Wan Channel",
+      "type": "Channel",
+      "sourceDistrict": "TW",
+      "computedDistricts": [
+        "S"
+      ],
+      "status": "assigned"
+    },
+    {
+      "id": "1109",
+      "name": "Middle Hill",
+      "type": "Hill",
+      "sourceDistrict": "WTS",
+      "computedDistricts": [
+        "Q"
+      ],
+      "status": "assigned"
+    },
+    {
+      "id": "1491",
+      "name": "Ping Fung Shan",
+      "type": "Hill",
+      "sourceDistrict": "NTH",
+      "computedDistricts": [
+        "P"
+      ],
+      "status": "assigned"
+    },
+    {
+      "id": "73",
+      "name": "Buffalo Pass",
+      "type": "Pass",
+      "sourceDistrict": "SK",
+      "computedDistricts": [
+        "R"
+      ],
+      "status": "assigned"
+    },
+    {
+      "id": "2473",
+      "name": "Tsuen Kam Au",
+      "type": "Area",
+      "sourceDistrict": "TW",
+      "computedDistricts": [
+        "M"
+      ],
+      "status": "assigned"
+    },
+    {
+      "id": "539",
+      "name": "Hong Kong Island",
+      "type": "Island",
+      "sourceDistrict": "STH",
+      "computedDistricts": [
+        "B"
+      ],
+      "status": "assigned"
+    },
+    {
+      "id": "738",
+      "name": "Kowloon",
+      "type": "Area",
+      "sourceDistrict": "YTM",
+      "computedDistricts": [
+        "G"
+      ],
+      "status": "assigned"
+    },
+    {
+      "id": "744",
+      "name": "Kowloon Peak",
+      "type": "Hill",
+      "sourceDistrict": "WTS",
+      "computedDistricts": [
+        "Q"
+      ],
+      "status": "assigned"
+    },
+    {
+      "id": "2561",
+      "name": "Tung Yeung Shan",
+      "type": "Hill",
+      "sourceDistrict": "SK",
+      "computedDistricts": [
+        "R"
+      ],
+      "status": "assigned"
+    },
+    {
+      "id": "2626",
+      "name": "Wang Leng",
+      "type": "Hill",
+      "sourceDistrict": "TP",
+      "computedDistricts": [
+        "N"
+      ],
+      "status": "assigned"
+    },
+    {
+      "id": "2628",
+      "name": "Wang Leng Au",
+      "type": "Pass",
+      "sourceDistrict": "NTH",
+      "computedDistricts": [
+        "P"
+      ],
+      "status": "assigned"
+    },
+    {
+      "id": "2714",
+      "name": "Wong Leng",
+      "type": "Hill",
+      "sourceDistrict": "NTH",
+      "computedDistricts": [
+        "P"
+      ],
+      "status": "assigned"
+    },
+    {
+      "id": "2285",
+      "name": "Tate's Cairn",
+      "type": "Hill",
+      "sourceDistrict": "ST",
+      "computedDistricts": [
+        "H"
+      ],
+      "status": "assigned"
+    }
+  ],
+  "samples": [
+    {
+      "label": "Central core",
+      "coordinates": [
+        114.154,
+        22.281
+      ],
+      "district": {
+        "status": "assigned",
+        "sourceSha256": "e145cc41230d8215dfb0a797230a0c9671827c018ba608bfc3086966da4735c8",
+        "matches": [
+          {
+            "id": "A",
+            "name": "Central & Western",
+            "nameZh": "中西區",
+            "relation": "interior"
+          }
+        ],
+        "milestoneDistrictId": "A"
+      },
+      "nearestAny": [
+        {
+          "id": "1896",
+          "name": "Sheung Wan",
+          "type": "Area",
+          "metres": 529
+        },
+        {
+          "id": "96",
+          "name": "Central District",
+          "type": "Area",
+          "metres": 560
+        },
+        {
+          "id": "1111",
+          "name": "Mid-Levels",
+          "type": "Area",
+          "metres": 937
+        }
+      ],
+      "nearestSettlement": [
+        {
+          "id": "1896",
+          "name": "Sheung Wan",
+          "type": "Area",
+          "metres": 529
+        },
+        {
+          "id": "96",
+          "name": "Central District",
+          "type": "Area",
+          "metres": 560
+        },
+        {
+          "id": "1111",
+          "name": "Mid-Levels",
+          "type": "Area",
+          "metres": 937
+        }
+      ]
+    },
+    {
+      "label": "Sha Tin example",
+      "coordinates": [
+        114.2,
+        22.38
+      ],
+      "district": {
+        "status": "assigned",
+        "sourceSha256": "e145cc41230d8215dfb0a797230a0c9671827c018ba608bfc3086966da4735c8",
+        "matches": [
+          {
+            "id": "R",
+            "name": "Sha Tin",
+            "nameZh": "沙田",
+            "relation": "interior"
+          }
+        ],
+        "milestoneDistrictId": "R"
+      },
+      "nearestAny": [
+        {
+          "id": "2734",
+          "name": "Wong Uk Village",
+          "type": "Village",
+          "metres": 47
+        },
+        {
+          "id": "1725",
+          "name": "Sha Tin Wai",
+          "type": "Village",
+          "metres": 368
+        },
+        {
+          "id": "3070",
+          "name": "Sha Tin Wai New Village",
+          "type": "Village",
+          "metres": 409
+        }
+      ],
+      "nearestSettlement": [
+        {
+          "id": "2734",
+          "name": "Wong Uk Village",
+          "type": "Village",
+          "metres": 47
+        },
+        {
+          "id": "1725",
+          "name": "Sha Tin Wai",
+          "type": "Village",
+          "metres": 368
+        },
+        {
+          "id": "3070",
+          "name": "Sha Tin Wai New Village",
+          "type": "Village",
+          "metres": 409
+        }
+      ]
+    },
+    {
+      "label": "Tung Chung example",
+      "coordinates": [
+        113.9439,
+        22.288
+      ],
+      "district": {
+        "status": "assigned",
+        "sourceSha256": "e145cc41230d8215dfb0a797230a0c9671827c018ba608bfc3086966da4735c8",
+        "matches": [
+          {
+            "id": "T",
+            "name": "Islands",
+            "nameZh": "離島",
+            "relation": "interior"
+          }
+        ],
+        "milestoneDistrictId": "T"
+      },
+      "nearestAny": [
+        {
+          "id": "3125",
+          "name": "Tung Chung",
+          "type": "Town",
+          "metres": 762
+        },
+        {
+          "id": "2730",
+          "name": "Wong Nai Uk",
+          "type": "Village",
+          "metres": 821
+        },
+        {
+          "id": "1046",
+          "name": "Ma Wan Chung",
+          "type": "Village",
+          "metres": 963
+        }
+      ],
+      "nearestSettlement": [
+        {
+          "id": "3125",
+          "name": "Tung Chung",
+          "type": "Town",
+          "metres": 762
+        },
+        {
+          "id": "2730",
+          "name": "Wong Nai Uk",
+          "type": "Village",
+          "metres": 821
+        },
+        {
+          "id": "1046",
+          "name": "Ma Wan Chung",
+          "type": "Village",
+          "metres": 963
+        }
+      ]
+    },
+    {
+      "label": "Cheung Chau example",
+      "coordinates": [
+        114.028,
+        22.208
+      ],
+      "district": {
+        "status": "assigned",
+        "sourceSha256": "e145cc41230d8215dfb0a797230a0c9671827c018ba608bfc3086966da4735c8",
+        "matches": [
+          {
+            "id": "T",
+            "name": "Islands",
+            "nameZh": "離島",
+            "relation": "interior"
+          }
+        ],
+        "milestoneDistrictId": "T"
+      },
+      "nearestAny": [
+        {
+          "id": "147",
+          "name": "Cheung Chau Wan",
+          "type": "Bay",
+          "metres": 163
+        },
+        {
+          "id": "146",
+          "name": "Cheung Chau",
+          "type": "Island",
+          "metres": 197
+        },
+        {
+          "id": "2223",
+          "name": "Tai Tsoi Yuen Kui",
+          "type": "Area",
+          "metres": 406
+        }
+      ],
+      "nearestSettlement": [
+        {
+          "id": "2223",
+          "name": "Tai Tsoi Yuen Kui",
+          "type": "Area",
+          "metres": 406
+        },
+        {
+          "id": "720",
+          "name": "Ko Shan Tsuen",
+          "type": "Village",
+          "metres": 442
+        },
+        {
+          "id": "1216",
+          "name": "Nam She Tong",
+          "type": "Area",
+          "metres": 482
+        }
+      ]
+    },
+    {
+      "label": "Victoria Harbour synthetic water point",
+      "coordinates": [
+        114.17,
+        22.29
+      ],
+      "district": {
+        "status": "assigned",
+        "sourceSha256": "e145cc41230d8215dfb0a797230a0c9671827c018ba608bfc3086966da4735c8",
+        "matches": [
+          {
+            "id": "E",
+            "name": "Yau Tsim Mong",
+            "nameZh": "油尖旺",
+            "relation": "interior"
+          }
+        ],
+        "milestoneDistrictId": "E"
+      },
+      "nearestAny": [
+        {
+          "id": "5084",
+          "name": "Blackhead Point",
+          "type": "Hill",
+          "metres": 830
+        },
+        {
+          "id": "2423",
+          "name": "Tsim Sha Tsui",
+          "type": "Area",
+          "metres": 1153
+        },
+        {
+          "id": "2601",
+          "name": "Wan Chai",
+          "type": "Area",
+          "metres": 1266
+        }
+      ],
+      "nearestSettlement": [
+        {
+          "id": "2423",
+          "name": "Tsim Sha Tsui",
+          "type": "Area",
+          "metres": 1153
+        },
+        {
+          "id": "2601",
+          "name": "Wan Chai",
+          "type": "Area",
+          "metres": 1266
+        },
+        {
+          "id": "96",
+          "name": "Central District",
+          "type": "Area",
+          "metres": 1419
+        }
+      ]
+    },
+    {
+      "label": "Outside HK maritime control",
+      "coordinates": [
+        114.4,
+        22.08
+      ],
+      "district": {
+        "status": "outside-dataset",
+        "sourceSha256": "e145cc41230d8215dfb0a797230a0c9671827c018ba608bfc3086966da4735c8",
+        "matches": [],
+        "milestoneDistrictId": null
+      },
+      "nearestAny": [
+        {
+          "id": "2584",
+          "name": "Waglan Island",
+          "type": "Island",
+          "metres": 15171
+        },
+        {
+          "id": "2093",
+          "name": "Tai Kok Tau",
+          "type": "Cape",
+          "metres": 15932
+        },
+        {
+          "id": "1641",
+          "name": "San Pai",
+          "type": "Reef",
+          "metres": 16211
+        }
+      ],
+      "nearestSettlement": [
+        {
+          "id": "2197",
+          "name": "Tai Tam",
+          "type": "Area",
+          "metres": 16847
+        },
+        {
+          "id": "1319",
+          "name": "Ngong Chong",
+          "type": "Area",
+          "metres": 16971
+        },
+        {
+          "id": "1312",
+          "name": "Ngau Wu",
+          "type": "Area",
+          "metres": 17312
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/blueock/Documents/ChatGPT/Hong Kong Foot Tracking/scripts/test-private-journal.py", line 74, in <module>
+    raise RuntimeError('PostGIS is not installed for this PostgreSQL runtime; spatial migration checks were NOT run.')
+RuntimeError: PostGIS is not installed for this PostgreSQL runtime; spatial migration checks were NOT run.

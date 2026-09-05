@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "verifiedAt": "2026-09-05T19:30:54.122Z",
+  "browser": "151.0.7922.34",
+  "sourceSha256": "e145cc41230d8215dfb0a797230a0c9671827c018ba608bfc3086966da4735c8",
+  "geographicCases": 684,
+  "invalidCases": 7,
+  "achievements": {
+    "repeated": 1,
+    "uncertain": 1,
+    "newDistrict": 2,
+    "editedBackToCentral": 1,
+    "empty": 0
+  },
+  "databaseChecks": 209,
+  "postgis": "POSTGIS=\"3.6.4 0\" [EXTENSION] PGSQL=\"180\" GEOS=\"3.14.1-CAPI-1.20.5\" PROJ=\"9.8.1 NETWORK_ENABLED=OFF URL_ENDPOINT=https://cdn.proj.org USER_WRITABLE_DIRECTORY=/Users/blueock/Library/Application Support/proj DATABASE_PATH=/private/tmp/placefold-spatial-runtime-3p1lvbg_/env/share/proj/proj.db\" (compiled against PROJ 9.8.1) LIBXML=\"2.14.6\" LIBJSON=\"0.18\" LIBPROTOBUF=\"1.5.2\" WAGYU=\"0.5.0 (Internal)\"",
+  "databaseReportSha256": "04c97d3e98c35d69b5d414b6510b78219ed95d90fc084e5b47a8113d821b3922",
+  "files": {
+    "experiments/photo-import/districts.mjs": "e4a9a0b651cb38344fe1269dc2fd9873f2550a24d5b3d2731f13566592f98f79",
+    "node_modules/point-in-polygon-hao/dist/pointInPolygon.js": "a9b32f6e22ca234ad8bfc6d65faeb1c5b58ab414f4b5263ef0ebd2af4cf46895",
+    "scripts/private_district_checks.py": "97d0ac10ef1c60ebff7f3dc8e9cad4ee0c4d22209265e8e8e7f50602e56004c8",
+    "scripts/test-private-journal.py": "bc4a96e20e76142c33f8382c5640b2419e31baded5863a333d7ac9082c3506ff",
+    "scripts/district-parity-checks.mjs": "c84b621a9dde8cc498b52e1d70d1b5369ce50d31a87f9e7ad1ecdf60ea8b0094",
+    "scripts/generate-district-seed.py": "a0ddd1754b0bab43b098a64f01b55bfe14dc502200e254dbc12f6ebd76da0ded",
+    "supabase/migrations/202609060004_district_classification.sql": "215113ecf6c77b1b55168d2e6ce20b2ffdefe6cdcbae040cd2795479ad6da121",
+    "supabase/migrations/202609060005_district_reference_seed.sql": "6e3d8fbc3f0d85e448a10a1f1a83d8a16a6baff2c8b89a818788be9fc77a39f5"
+  },
+  "pageErrors": [],
+  "externalRequests": [],
+  "scope": "Real local Chromium module vs real isolated PostGIS and the existing GEOS oracle. Synthetic controls, not GPS ground truth, hosted Supabase, physical devices, or production UI."
+}

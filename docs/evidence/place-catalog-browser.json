@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "verifiedAt": "2026-09-05T19:47:26.281Z",
+  "browser": "151.0.7922.34",
+  "places": 2706,
+  "aliases": 120,
+  "fullNodeBrowserParity": true,
+  "changedSourceRejected": true,
+  "immutable": true,
+  "source": {
+    "datasetId": "landsd_rcd_1648571595120_89752",
+    "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+    "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+  },
+  "files": {
+    "src/geography/place-catalog.mjs": "efe8008d7b15f5ab18a018893f504e1c3236405f4b831c4399a6d62b389a93ed",
+    "experiments/photo-import/place-catalog.test.mjs": "0634d072ab6c942b25dd338ae51da69fc6acb25adc1a54cc56a3099bc8bf7230",
+    "scripts/place-catalog-browser-checks.mjs": "465881e69c49354439a16f58d2cb52b5d7b55a3b45d8708896c8d79087769a0d",
+    "scripts/serve-diagnostic.py": "9fecea58557bb188f66af2b84d7ddc92211014c2b8dd006675a43f48ce3f085e",
+    "data/reference/hk-place-points.geojson": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+    "data/reference/hk-place-names.json": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+  },
+  "pageErrors": [],
+  "externalRequests": [],
+  "scope": "Real Chromium loads both public source files through the diagnostic HTTP allowlist. Reference catalog only; no photo assignment, production UI, hosted service or physical device claim."
+}

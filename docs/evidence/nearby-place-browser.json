@@ -1,0 +1,870 @@
+{
+  "status": "passed",
+  "verifiedAt": "2026-09-05T19:55:37.562Z",
+  "browser": "151.0.7922.34",
+  "fixtures": "10/10",
+  "accepted": 5,
+  "suggestions": 4,
+  "uniqueDistricts": 1,
+  "heicFileInput": true,
+  "workerConnectionsBlockedByCSP": true,
+  "fallbacks": [
+    {
+      "failure": "missing",
+      "status": "accepted",
+      "locality": "reference-unavailable",
+      "district": "A"
+    },
+    {
+      "failure": "corrupt",
+      "status": "accepted",
+      "locality": "reference-unavailable",
+      "district": "A"
+    }
+  ],
+  "source": {
+    "datasetId": "landsd_rcd_1648571595120_89752",
+    "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+    "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+  },
+  "coordinates": [
+    [
+      114.154,
+      22.281
+    ],
+    [
+      114.2,
+      22.38
+    ],
+    [
+      113.9439,
+      22.288
+    ],
+    [
+      114.028,
+      22.208
+    ],
+    [
+      114.17,
+      22.29
+    ],
+    [
+      114.4,
+      22.08
+    ]
+  ],
+  "benchmark": [
+    {
+      "radiusMetres": 250,
+      "results": [
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 250,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "no-nearby-labels",
+          "candidates": []
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 250,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "2734",
+              "name": {
+                "id": 27340000,
+                "en": "Wong Uk Village",
+                "zhHant": "王屋村"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 47,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 250,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "no-nearby-labels",
+          "candidates": []
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 250,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "146",
+              "name": {
+                "id": 1460000,
+                "en": "Cheung Chau",
+                "zhHant": "長洲"
+              },
+              "placeClass": "Topographic",
+              "placeType": "Island",
+              "distanceMetres": 197,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 250,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "no-nearby-labels",
+          "candidates": []
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 250,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "outside-dataset",
+          "candidates": []
+        }
+      ]
+    },
+    {
+      "radiusMetres": 500,
+      "results": [
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 500,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "no-nearby-labels",
+          "candidates": []
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 500,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "2734",
+              "name": {
+                "id": 27340000,
+                "en": "Wong Uk Village",
+                "zhHant": "王屋村"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 47,
+              "confirmed": false
+            },
+            {
+              "id": "1725",
+              "name": {
+                "id": 17250000,
+                "en": "Sha Tin Wai",
+                "zhHant": "沙田圍"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 368,
+              "confirmed": false
+            },
+            {
+              "id": "3070",
+              "name": {
+                "id": 30700000,
+                "en": "Sha Tin Wai New Village",
+                "zhHant": "沙田圍新村"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 409,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 500,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "no-nearby-labels",
+          "candidates": []
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 500,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "146",
+              "name": {
+                "id": 1460000,
+                "en": "Cheung Chau",
+                "zhHant": "長洲"
+              },
+              "placeClass": "Topographic",
+              "placeType": "Island",
+              "distanceMetres": 197,
+              "confirmed": false
+            },
+            {
+              "id": "2223",
+              "name": {
+                "id": 22230000,
+                "en": "Tai Tsoi Yuen Kui",
+                "zhHant": "大菜園區"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Area",
+              "distanceMetres": 406,
+              "confirmed": false
+            },
+            {
+              "id": "720",
+              "name": {
+                "id": 7200000,
+                "en": "Ko Shan Tsuen",
+                "zhHant": "高山村"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 442,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 500,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "no-nearby-labels",
+          "candidates": []
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 500,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "outside-dataset",
+          "candidates": []
+        }
+      ]
+    },
+    {
+      "radiusMetres": 1000,
+      "results": [
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 1000,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "1896",
+              "name": {
+                "id": 18960000,
+                "en": "Sheung Wan",
+                "zhHant": "上環"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Area",
+              "distanceMetres": 529,
+              "confirmed": false
+            },
+            {
+              "id": "96",
+              "name": {
+                "id": 960000,
+                "en": "Central District",
+                "zhHant": "中環"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Area",
+              "distanceMetres": 560,
+              "confirmed": false
+            },
+            {
+              "id": "1111",
+              "name": {
+                "id": 11110000,
+                "en": "Mid-Levels",
+                "zhHant": "半山區"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Area",
+              "distanceMetres": 937,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 1000,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "2734",
+              "name": {
+                "id": 27340000,
+                "en": "Wong Uk Village",
+                "zhHant": "王屋村"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 47,
+              "confirmed": false
+            },
+            {
+              "id": "1725",
+              "name": {
+                "id": 17250000,
+                "en": "Sha Tin Wai",
+                "zhHant": "沙田圍"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 368,
+              "confirmed": false
+            },
+            {
+              "id": "3070",
+              "name": {
+                "id": 30700000,
+                "en": "Sha Tin Wai New Village",
+                "zhHant": "沙田圍新村"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 409,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 1000,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "3125",
+              "name": {
+                "id": 31250000,
+                "en": "Tung Chung",
+                "zhHant": "東涌"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Town",
+              "distanceMetres": 762,
+              "confirmed": false
+            },
+            {
+              "id": "2730",
+              "name": {
+                "id": 27300000,
+                "en": "Wong Nai Uk",
+                "zhHant": "黃泥屋"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 821,
+              "confirmed": false
+            },
+            {
+              "id": "1046",
+              "name": {
+                "id": 10460000,
+                "en": "Ma Wan Chung",
+                "zhHant": "馬灣涌"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 963,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 1000,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "146",
+              "name": {
+                "id": 1460000,
+                "en": "Cheung Chau",
+                "zhHant": "長洲"
+              },
+              "placeClass": "Topographic",
+              "placeType": "Island",
+              "distanceMetres": 197,
+              "confirmed": false
+            },
+            {
+              "id": "2223",
+              "name": {
+                "id": 22230000,
+                "en": "Tai Tsoi Yuen Kui",
+                "zhHant": "大菜園區"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Area",
+              "distanceMetres": 406,
+              "confirmed": false
+            },
+            {
+              "id": "720",
+              "name": {
+                "id": 7200000,
+                "en": "Ko Shan Tsuen",
+                "zhHant": "高山村"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 442,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 1000,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "no-nearby-labels",
+          "candidates": []
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 1000,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "outside-dataset",
+          "candidates": []
+        }
+      ]
+    },
+    {
+      "radiusMetres": 2000,
+      "results": [
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 2000,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "1896",
+              "name": {
+                "id": 18960000,
+                "en": "Sheung Wan",
+                "zhHant": "上環"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Area",
+              "distanceMetres": 529,
+              "confirmed": false
+            },
+            {
+              "id": "96",
+              "name": {
+                "id": 960000,
+                "en": "Central District",
+                "zhHant": "中環"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Area",
+              "distanceMetres": 560,
+              "confirmed": false
+            },
+            {
+              "id": "1111",
+              "name": {
+                "id": 11110000,
+                "en": "Mid-Levels",
+                "zhHant": "半山區"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Area",
+              "distanceMetres": 937,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 2000,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "2734",
+              "name": {
+                "id": 27340000,
+                "en": "Wong Uk Village",
+                "zhHant": "王屋村"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 47,
+              "confirmed": false
+            },
+            {
+              "id": "1725",
+              "name": {
+                "id": 17250000,
+                "en": "Sha Tin Wai",
+                "zhHant": "沙田圍"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 368,
+              "confirmed": false
+            },
+            {
+              "id": "3070",
+              "name": {
+                "id": 30700000,
+                "en": "Sha Tin Wai New Village",
+                "zhHant": "沙田圍新村"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 409,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 2000,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "3125",
+              "name": {
+                "id": 31250000,
+                "en": "Tung Chung",
+                "zhHant": "東涌"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Town",
+              "distanceMetres": 762,
+              "confirmed": false
+            },
+            {
+              "id": "2730",
+              "name": {
+                "id": 27300000,
+                "en": "Wong Nai Uk",
+                "zhHant": "黃泥屋"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 821,
+              "confirmed": false
+            },
+            {
+              "id": "1046",
+              "name": {
+                "id": 10460000,
+                "en": "Ma Wan Chung",
+                "zhHant": "馬灣涌"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 963,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 2000,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "146",
+              "name": {
+                "id": 1460000,
+                "en": "Cheung Chau",
+                "zhHant": "長洲"
+              },
+              "placeClass": "Topographic",
+              "placeType": "Island",
+              "distanceMetres": 197,
+              "confirmed": false
+            },
+            {
+              "id": "2223",
+              "name": {
+                "id": 22230000,
+                "en": "Tai Tsoi Yuen Kui",
+                "zhHant": "大菜園區"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Area",
+              "distanceMetres": 406,
+              "confirmed": false
+            },
+            {
+              "id": "720",
+              "name": {
+                "id": 7200000,
+                "en": "Ko Shan Tsuen",
+                "zhHant": "高山村"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Village",
+              "distanceMetres": 442,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 2000,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "suggestions",
+          "candidates": [
+            {
+              "id": "2423",
+              "name": {
+                "id": 24230000,
+                "en": "Tsim Sha Tsui",
+                "zhHant": "尖沙咀"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Area",
+              "distanceMetres": 1153,
+              "confirmed": false
+            },
+            {
+              "id": "2601",
+              "name": {
+                "id": 26010000,
+                "en": "Wan Chai",
+                "zhHant": "灣仔"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Area",
+              "distanceMetres": 1266,
+              "confirmed": false
+            },
+            {
+              "id": "96",
+              "name": {
+                "id": 960000,
+                "en": "Central District",
+                "zhHant": "中環"
+              },
+              "placeClass": "Settlement",
+              "placeType": "Area",
+              "distanceMetres": 1419,
+              "confirmed": false
+            }
+          ]
+        },
+        {
+          "method": "haversine-label-point-v1",
+          "source": {
+            "datasetId": "landsd_rcd_1648571595120_89752",
+            "pointsSha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+            "namesSha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33"
+          },
+          "radiusMetres": 2000,
+          "limit": 3,
+          "meaning": "Unconfirmed nearby label points, not locality boundaries or verified visits",
+          "status": "outside-dataset",
+          "candidates": []
+        }
+      ]
+    }
+  ],
+  "nodeBrowserParity": true,
+  "offline": {
+    "serverStopped": true,
+    "assets": [
+      "/experiments/photo-import/index.html",
+      "/experiments/photo-import/style.css",
+      "/experiments/photo-import/diagnostic.mjs",
+      "/experiments/photo-import/offline.mjs",
+      "/experiments/photo-import/journal-panel.mjs",
+      "/experiments/photo-import/worker.mjs",
+      "/experiments/photo-import/metadata.mjs",
+      "/experiments/photo-import/palette.mjs",
+      "/experiments/photo-import/districts.mjs",
+      "/src/journal/local-journal.mjs",
+      "/src/geography/place-catalog.mjs",
+      "/src/geography/nearby-places.mjs",
+      "/data/reference/hk-place-points.geojson",
+      "/data/reference/hk-place-names.json",
+      "/node_modules/exifr/dist/full.esm.mjs",
+      "/node_modules/point-in-polygon-hao/dist/pointInPolygon.js",
+      "/data/reference/hk-districts.geojson"
+    ],
+    "importSuggestions": true,
+    "saveExportDeleteReload": true,
+    "suggestionsNotPersisted": true
+  },
+  "screenshots": [
+    "docs/evidence/nearby-places-desktop.png",
+    "docs/evidence/nearby-places-mobile.png"
+  ],
+  "noHorizontalOverflow": true,
+  "pageErrors": [],
+  "externalRequests": [],
+  "nonGetRequests": [],
+  "files": {
+    "src/geography/nearby-places.mjs": "1ec625c07ebe61696ddb6674d890fb9921b505c304b432e2cd1205eed55ccab5",
+    "src/geography/place-catalog.mjs": "efe8008d7b15f5ab18a018893f504e1c3236405f4b831c4399a6d62b389a93ed",
+    "experiments/photo-import/nearby-places.test.mjs": "580dcfb0a7e2d27b4c7cb8ef7989e69b511bce465326d8391acc0aee2ff836cb",
+    "experiments/photo-import/worker.mjs": "0e6285c94a28b2c9fe0868db28495a52600dd1193f9edc097f4bbd82a66ec7fd",
+    "experiments/photo-import/diagnostic.mjs": "187c8e8b798136e768c576b13dc7e784feed30ae4f4e673792fd39756e67cfd1",
+    "experiments/photo-import/index.html": "a87b35fec12844ace4ffc75a7c22ce69eb4bc7dcbf9c7ac69a650d032d6798d5",
+    "experiments/photo-import/offline-worker.mjs": "6cb52596cfd010d3357b62b8e9723a782e29745361a33c10338eefcb90acb836",
+    "experiments/photo-import/offline-worker.test.mjs": "de2032d35aa559acb3eb64d3ec866ee9b434c1626f138b4b786b53d65796e994",
+    "scripts/serve-diagnostic.py": "999c4c5fc218f7585daea6d18731cf8f7af24f5a0a390e7685cbce5f54b9cf84",
+    "scripts/nearby-place-browser-checks.mjs": "0ba72dab8d6d99d7dea820b3031770e2bc40ed941e8f5ea10d4da62a3470f2bc"
+  },
+  "scope": "Diagnostic Chromium only. Sample coordinates are scenario controls, not surveyed ground truth. Radius is exploratory; no locality containment, measured GPS accuracy, native library access, production Figma or hosted sync claim."
+}

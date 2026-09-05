@@ -1,0 +1,27 @@
+{
+  "runtime_prefix": "/tmp/placefold-spatial-runtime-3p1lvbg_/env",
+  "micromamba": {
+    "version": "2.9.0",
+    "url": "https://api.anaconda.org/download/conda-forge/micromamba/2.9.0/osx-arm64/micromamba-2.9.0-0.tar.bz2",
+    "sha256": "500f5074feb8d02c4296ef9921c3650ed2874171805a9fbb8fbb53896433646b"
+  },
+  "packages": {
+    "count": 69,
+    "all_archive_sha256_verified": true,
+    "link_scripts_found": 0,
+    "link_scripts_skipped": true,
+    "lock": "spatial-runtime-package-lock.json"
+  },
+  "verification": {
+    "checks": 163,
+    "cluster_stopped": true,
+    "pg_ctl_status_exit": 3,
+    "source_sha256": {
+      "scripts/test-private-journal.py": "5d7dfb70b026b349a78c0cdcf002f5141fe695b23c883a78dacb1fdaddc1e82e",
+      "scripts/private_sync_checks.py": "4d85ea0237a559211922c922b2275fd9c5ad547af8a67c47e0e52a49e18f4e37",
+      "supabase/migrations/202609060001_private_journal.sql": "5fb4ec55137f09d932254bc46e3083c8b28860400bbfc23888cb894a0fac521e",
+      "supabase/migrations/202609060002_observation_geometry.sql": "4956569a8f00dbaa9aa5e7267937742741124365b8ac3fe164555b5b599e4f80",
+      "supabase/migrations/202609060003_private_sync.sql": "3838c16ea588ecf7f54bbd6fd55dd779750cf16a63638c834521dfd915b8cca7"
+    }
+  }
+}

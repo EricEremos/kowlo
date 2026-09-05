@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "phase": "after-reload",
+  "checks": 17,
+  "cases": [
+    "Closed sessions cannot read",
+    "Stable identity upserts once and excludes image bytes, filenames and owner fields",
+    "Distinct photo identifiers retain equal coordinates",
+    "Photo GPS edits preserve authored notes and labels",
+    "Account partitions hide records and reject foreign note links",
+    "Device drafts remain separate even when scope identifiers match",
+    "Nonfinite and out-of-range coordinates leave the journal unchanged",
+    "Invalid capture dates/offsets rejected and unknown timezone preserved",
+    "Unicode note length matches PostgreSQL character limits",
+    "Account switch aborts unfinished writes and rejects stale reads",
+    "Latest account activation wins a concurrent open race",
+    "Observation deletion unlinks and preserves the authored note",
+    "Explicit note deletion removes its content",
+    "64 seeded coordinate records survive JSON export without rounding or loss",
+    "Delete all is scoped and clears both record types",
+    "Full page reload preserves exact saved locations and notes",
+    "Deletion persists after closing and reopening storage"
+  ],
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36"
+}

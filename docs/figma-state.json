@@ -1,0 +1,51 @@
+{
+  "fileKey": "whw3t850Pcj9LrSiBa8rwn",
+  "currentScreenAndComponentState": "evidence/figma/design-review-state.json",
+  "brandProposal": "Placefold",
+  "brandStatus": "Awaiting user review",
+  "pages": {
+    "direction": "0:1"
+  },
+  "frames": {
+    "cover": "5:2"
+  },
+  "coverTextIds": [
+    "5:3",
+    "5:4",
+    "5:5",
+    "5:6",
+    "5:7",
+    "5:8"
+  ],
+  "collections": {
+    "primitives": "VariableCollectionId:8:2",
+    "theme": "VariableCollectionId:8:3"
+  },
+  "variables": {
+    "palette/paper": "VariableID:8:4",
+    "palette/white": "VariableID:8:5",
+    "palette/ink": "VariableID:8:6",
+    "palette/muted": "VariableID:8:7",
+    "palette/harbour": "VariableID:8:8",
+    "palette/mist": "VariableID:8:9",
+    "palette/line": "VariableID:8:10",
+    "palette/clay": "VariableID:8:11",
+    "color/paper": "VariableID:8:12",
+    "color/white": "VariableID:8:13",
+    "color/ink": "VariableID:8:14",
+    "color/muted": "VariableID:8:15",
+    "color/harbour": "VariableID:8:16",
+    "color/mist": "VariableID:8:17",
+    "color/line": "VariableID:8:18",
+    "color/clay": "VariableID:8:19",
+    "space/xs": "VariableID:8:20",
+    "space/sm": "VariableID:8:21",
+    "space/md": "VariableID:8:22",
+    "space/lg": "VariableID:8:23",
+    "space/xl": "VariableID:8:24",
+    "space/xxl": "VariableID:8:25",
+    "radius/sm": "VariableID:8:26",
+    "radius/md": "VariableID:8:27",
+    "radius/full": "VariableID:8:28"
+  }
+}

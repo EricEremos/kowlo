@@ -1,0 +1,201 @@
+{
+  "brand": {
+    "proposal": "Placefold",
+    "status": "awaiting user review"
+  },
+  "pages": {
+    "direction": "0:1",
+    "buttons": "13:2",
+    "placeRecord": "16:2",
+    "screens": "15:18"
+  },
+  "frames": {
+    "cover": "5:2",
+    "brand": "15:2",
+    "welcome": "16:12",
+    "importReview": "16:13",
+    "journal": "16:14",
+    "desktop": "16:15"
+  },
+  "components": {
+    "buttons": "14:10",
+    "primary": "14:2",
+    "hover": "14:4",
+    "secondary": "14:6",
+    "disabled": "14:8",
+    "placeRecord": "16:3"
+  },
+  "textStyles": [
+    {
+      "id": "S:13914edcd80e0ff1e793c41e58f7511718e9afdb,",
+      "name": "Display/Brand",
+      "font": {
+        "family": "Newsreader",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "fontSize": 72
+    },
+    {
+      "id": "S:643cc253f7ce23762815c5e99ba5c24c6802b5ba,",
+      "name": "Display/Hero",
+      "font": {
+        "family": "Newsreader",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "fontSize": 48
+    },
+    {
+      "id": "S:7238fbbeb5a36c027f801b83c2fac365a07893bf,",
+      "name": "Heading/Page",
+      "font": {
+        "family": "Newsreader",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "fontSize": 36
+    },
+    {
+      "id": "S:8b829daf4566a74ef409efa3d3f0ec36b4e49b34,",
+      "name": "Heading/Card",
+      "font": {
+        "family": "Newsreader",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "fontSize": 26
+    },
+    {
+      "id": "S:afe2593f120f0c23981ba698bc48711fd5e99898,",
+      "name": "Body/Large",
+      "font": {
+        "family": "DM Sans",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400,
+          "opsz": 14
+        }
+      },
+      "fontSize": 18
+    },
+    {
+      "id": "S:8f0475fe2a7da16d66f76d84d19f2f1709e7f44a,",
+      "name": "Body/Default",
+      "font": {
+        "family": "DM Sans",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400,
+          "opsz": 14
+        }
+      },
+      "fontSize": 16
+    },
+    {
+      "id": "S:f2449f0b29b619a2f3872cec3fc478886b9e2e8b,",
+      "name": "Body/Small",
+      "font": {
+        "family": "DM Sans",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400,
+          "opsz": 14
+        }
+      },
+      "fontSize": 14
+    },
+    {
+      "id": "S:15620b09f235b04bd3307491d2f76956468e3782,",
+      "name": "Label/Default",
+      "font": {
+        "family": "DM Sans",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500,
+          "opsz": 14
+        }
+      },
+      "fontSize": 14
+    },
+    {
+      "id": "S:aa9228e833983cef62298e75f3ad2390c4d6ce7c,",
+      "name": "Label/Overline",
+      "font": {
+        "family": "DM Sans",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500,
+          "opsz": 14
+        }
+      },
+      "fontSize": 11
+    }
+  ],
+  "prototypeLinks": [
+    {
+      "from": "17:25",
+      "to": "16:13"
+    },
+    {
+      "from": "17:27",
+      "to": "16:14"
+    },
+    {
+      "from": "18:36",
+      "to": "16:14"
+    },
+    {
+      "from": "19:33",
+      "to": "16:13"
+    },
+    {
+      "from": "20:38",
+      "to": "16:13"
+    }
+  ],
+  "frameMeasurements": [
+    {
+      "id": "16:12",
+      "name": "01 · Welcome / Private by choice",
+      "width": 390,
+      "height": 844,
+      "bottom": 820
+    },
+    {
+      "id": "16:13",
+      "name": "02 · Import / Review recovered places",
+      "width": 390,
+      "height": 844,
+      "bottom": 820
+    },
+    {
+      "id": "16:14",
+      "name": "03 · Journal / Sample collection",
+      "width": 390,
+      "height": 844,
+      "bottom": 820
+    },
+    {
+      "id": "16:15",
+      "name": "04 · Desktop / Sample journal",
+      "width": 1440,
+      "height": 960,
+      "bottom": 932.4000244140625
+    }
+  ],
+  "flowStartingPoints": [
+    {
+      "nodeId": "16:12",
+      "name": "Placefold · Choose, review, remember"
+    }
+  ]
+}

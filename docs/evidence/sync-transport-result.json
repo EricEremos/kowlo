@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "checks": 13,
+  "cases": [
+    "Verified identity precedes RPCs; requests contain only allowed metadata and clear the matching outbox",
+    "Opted-in dates, palettes and authored notes transfer with observation creation before linked notes",
+    "Incoming coordinates reach the real local journal without being echoed back as a new upload",
+    "Wrong account and unsafe configuration stop before metadata transfer",
+    "A lost response survives database reopening and retries identically before sending a later edit",
+    "Purged uploads send only retirement identifiers, followed by a version-checked deletion",
+    "An already accepted retired upload supplies its exact revision to deletion without restoring photo content",
+    "Full pull pages stop at the request budget, retain exact large revisions and resume before writing",
+    "A conflict pulls the current remote version and preserves the local record for an explicit decision",
+    "An account change while pulling rejects the old response and prevents any write into the new session",
+    "An account change during an upload cannot acknowledge the old session or lose its pending request",
+    "Authorization, invalid JSON and malformed pages leave local work intact without echoing server content",
+    "Redirects are rejected and cancellation stops before sending a request"
+  ],
+  "browser": "151.0.7922.34",
+  "surface": "Real Chromium fetch and IndexedDB; intercepted synthetic Auth/RPC endpoints, no hosted service",
+  "pageErrors": []
+}

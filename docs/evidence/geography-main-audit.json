@@ -1,0 +1,643 @@
+{
+  "verified_at": "2026-09-05T15:49:03.077460+00:00",
+  "source_url": "https://www.had.gov.hk/psi/hong-kong-administrative-boundaries/hksar_18_district_boundary.json",
+  "source_sha256": "e145cc41230d8215dfb0a797230a0c9671827c018ba608bfc3086966da4735c8",
+  "official_bytes_match": true,
+  "http_last_modified": "Mon, 31 Aug 2026 03:33:33 GMT",
+  "validator_exit_code": 2,
+  "validator_issue_count": 15,
+  "finding_disposition": "10 repeated-vertex edges plus 5 aggregate notices; accepted for current predicate feasibility, not a clean validator pass",
+  "valid_districts": 18,
+  "unique_interior_assignments": 18,
+  "named_and_outside_controls": [
+    {
+      "fixture_name": "Central (core)",
+      "point_wgs84": [
+        114.154,
+        22.281
+      ],
+      "expected_district": "A",
+      "hit_district_ids": [
+        "A"
+      ],
+      "passes_expected": true,
+      "note": "district town center fallback point"
+    },
+    {
+      "fixture_name": "Sha Tin",
+      "point_wgs84": [
+        114.2,
+        22.38
+      ],
+      "expected_district": "R",
+      "hit_district_ids": [
+        "R"
+      ],
+      "passes_expected": true,
+      "note": "new town residential center"
+    },
+    {
+      "fixture_name": "Tung Chung",
+      "point_wgs84": [
+        113.9439,
+        22.288
+      ],
+      "expected_district": "T",
+      "hit_district_ids": [
+        "T"
+      ],
+      "passes_expected": true,
+      "note": "island area in Lantau"
+    },
+    {
+      "fixture_name": "Cheung Chau",
+      "point_wgs84": [
+        114.028,
+        22.208
+      ],
+      "expected_district": "T",
+      "hit_district_ids": [
+        "T"
+      ],
+      "passes_expected": true,
+      "note": "outlying island urban area"
+    },
+    {
+      "fixture_name": "Outside-HK maritime control",
+      "point_wgs84": [
+        114.4,
+        22.08
+      ],
+      "expected_district": "__outside__",
+      "hit_district_ids": [],
+      "passes_expected": true,
+      "note": "outside HK district boundary"
+    },
+    {
+      "fixture_name": "Offshore control (potentially maritime)",
+      "point_wgs84": [
+        113.95,
+        22.2
+      ],
+      "expected_district": "T",
+      "hit_district_ids": [
+        "T"
+      ],
+      "passes_expected": true,
+      "note": "inside Islands boundary near sea-facing waters"
+    }
+  ],
+  "positive_area_overlaps": [],
+  "boundary_ambiguity_samples": [
+    {
+      "districts": [
+        "A",
+        "B"
+      ],
+      "longitude": 114.16622,
+      "latitude": 22.27407,
+      "matches": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "districts": [
+        "A",
+        "D"
+      ],
+      "longitude": 114.14008,
+      "latitude": 22.26649,
+      "matches": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "districts": [
+        "A",
+        "E"
+      ],
+      "longitude": 114.16744,
+      "latitude": 22.29066,
+      "matches": [
+        "A",
+        "B",
+        "E"
+      ]
+    },
+    {
+      "districts": [
+        "A",
+        "S"
+      ],
+      "longitude": 114.14951,
+      "latitude": 22.29748,
+      "matches": [
+        "A",
+        "E",
+        "S"
+      ]
+    },
+    {
+      "districts": [
+        "A",
+        "T"
+      ],
+      "longitude": 114.11011,
+      "latitude": 22.27303,
+      "matches": [
+        "A",
+        "D",
+        "T"
+      ]
+    },
+    {
+      "districts": [
+        "B",
+        "C"
+      ],
+      "longitude": 114.19602,
+      "latitude": 22.27667,
+      "matches": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "districts": [
+        "B",
+        "D"
+      ],
+      "longitude": 114.17948,
+      "latitude": 22.25638,
+      "matches": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "districts": [
+        "B",
+        "E"
+      ],
+      "longitude": 114.1743,
+      "latitude": 22.28805,
+      "matches": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "districts": [
+        "C",
+        "D"
+      ],
+      "longitude": 114.22842,
+      "latitude": 22.25715,
+      "matches": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "districts": [
+        "C",
+        "E"
+      ],
+      "longitude": 114.18686,
+      "latitude": 22.29412,
+      "matches": [
+        "C",
+        "E",
+        "G"
+      ]
+    },
+    {
+      "districts": [
+        "C",
+        "G"
+      ],
+      "longitude": 114.19954,
+      "latitude": 22.30026,
+      "matches": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "districts": [
+        "C",
+        "J"
+      ],
+      "longitude": 114.24424,
+      "latitude": 22.28229,
+      "matches": [
+        "C",
+        "J",
+        "Q"
+      ]
+    },
+    {
+      "districts": [
+        "C",
+        "Q"
+      ],
+      "longitude": 114.2616,
+      "latitude": 22.27301,
+      "matches": [
+        "C",
+        "Q"
+      ]
+    },
+    {
+      "districts": [
+        "D",
+        "Q"
+      ],
+      "longitude": 114.30907,
+      "latitude": 22.19283,
+      "matches": [
+        "D",
+        "Q",
+        "T"
+      ]
+    },
+    {
+      "districts": [
+        "D",
+        "T"
+      ],
+      "longitude": 114.20001,
+      "latitude": 22.19264,
+      "matches": [
+        "D",
+        "T"
+      ]
+    },
+    {
+      "districts": [
+        "E",
+        "F"
+      ],
+      "longitude": 114.15901,
+      "latitude": 22.32365,
+      "matches": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "districts": [
+        "E",
+        "G"
+      ],
+      "longitude": 114.17882,
+      "latitude": 22.31002,
+      "matches": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "districts": [
+        "E",
+        "S"
+      ],
+      "longitude": 114.14952,
+      "latitude": 22.3138,
+      "matches": [
+        "E",
+        "F",
+        "S"
+      ]
+    },
+    {
+      "districts": [
+        "F",
+        "G"
+      ],
+      "longitude": 114.17553,
+      "latitude": 22.33733,
+      "matches": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "districts": [
+        "F",
+        "R"
+      ],
+      "longitude": 114.15964,
+      "latitude": 22.3464,
+      "matches": [
+        "F",
+        "R"
+      ]
+    },
+    {
+      "districts": [
+        "F",
+        "S"
+      ],
+      "longitude": 114.14005,
+      "latitude": 22.3286,
+      "matches": [
+        "F",
+        "S"
+      ]
+    },
+    {
+      "districts": [
+        "G",
+        "H"
+      ],
+      "longitude": 114.18746,
+      "latitude": 22.33475,
+      "matches": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "districts": [
+        "G",
+        "J"
+      ],
+      "longitude": 114.21056,
+      "latitude": 22.31573,
+      "matches": [
+        "G",
+        "J"
+      ]
+    },
+    {
+      "districts": [
+        "G",
+        "R"
+      ],
+      "longitude": 114.17521,
+      "latitude": 22.34897,
+      "matches": [
+        "G",
+        "R"
+      ]
+    },
+    {
+      "districts": [
+        "H",
+        "J"
+      ],
+      "longitude": 114.21391,
+      "latitude": 22.33233,
+      "matches": [
+        "H",
+        "J"
+      ]
+    },
+    {
+      "districts": [
+        "H",
+        "Q"
+      ],
+      "longitude": 114.22112,
+      "latitude": 22.35318,
+      "matches": [
+        "H",
+        "Q"
+      ]
+    },
+    {
+      "districts": [
+        "H",
+        "R"
+      ],
+      "longitude": 114.20015,
+      "latitude": 22.35463,
+      "matches": [
+        "H",
+        "R"
+      ]
+    },
+    {
+      "districts": [
+        "J",
+        "Q"
+      ],
+      "longitude": 114.24083,
+      "latitude": 22.30896,
+      "matches": [
+        "J",
+        "Q"
+      ]
+    },
+    {
+      "districts": [
+        "K",
+        "L"
+      ],
+      "longitude": 114.03453,
+      "latitude": 22.36515,
+      "matches": [
+        "K",
+        "L"
+      ]
+    },
+    {
+      "districts": [
+        "K",
+        "M"
+      ],
+      "longitude": 114.09691,
+      "latitude": 22.40306,
+      "matches": [
+        "K",
+        "M"
+      ]
+    },
+    {
+      "districts": [
+        "K",
+        "P"
+      ],
+      "longitude": 114.14702,
+      "latitude": 22.41434,
+      "matches": [
+        "K",
+        "P"
+      ]
+    },
+    {
+      "districts": [
+        "K",
+        "R"
+      ],
+      "longitude": 114.16533,
+      "latitude": 22.39274,
+      "matches": [
+        "K",
+        "R"
+      ]
+    },
+    {
+      "districts": [
+        "K",
+        "S"
+      ],
+      "longitude": 114.11008,
+      "latitude": 22.36001,
+      "matches": [
+        "K",
+        "S"
+      ]
+    },
+    {
+      "districts": [
+        "K",
+        "T"
+      ],
+      "longitude": 114.01046,
+      "latitude": 22.31385,
+      "matches": [
+        "K",
+        "T"
+      ]
+    },
+    {
+      "districts": [
+        "L",
+        "M"
+      ],
+      "longitude": 113.98099,
+      "latitude": 22.43035,
+      "matches": [
+        "L",
+        "M"
+      ]
+    },
+    {
+      "districts": [
+        "L",
+        "T"
+      ],
+      "longitude": 113.99458,
+      "latitude": 22.32463,
+      "matches": [
+        "K",
+        "L",
+        "T"
+      ]
+    },
+    {
+      "districts": [
+        "M",
+        "N"
+      ],
+      "longitude": 114.09249,
+      "latitude": 22.48876,
+      "matches": [
+        "M",
+        "N"
+      ]
+    },
+    {
+      "districts": [
+        "M",
+        "P"
+      ],
+      "longitude": 114.11368,
+      "latitude": 22.43951,
+      "matches": [
+        "M",
+        "P"
+      ]
+    },
+    {
+      "districts": [
+        "N",
+        "P"
+      ],
+      "longitude": 114.24556,
+      "latitude": 22.49992,
+      "matches": [
+        "N",
+        "P"
+      ]
+    },
+    {
+      "districts": [
+        "P",
+        "Q"
+      ],
+      "longitude": 114.33906,
+      "latitude": 22.41807,
+      "matches": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "districts": [
+        "P",
+        "R"
+      ],
+      "longitude": 114.21471,
+      "latitude": 22.43136,
+      "matches": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "districts": [
+        "Q",
+        "R"
+      ],
+      "longitude": 114.23976,
+      "latitude": 22.37525,
+      "matches": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "districts": [
+        "Q",
+        "T"
+      ],
+      "longitude": 114.30907,
+      "latitude": 22.19283,
+      "matches": [
+        "D",
+        "Q",
+        "T"
+      ]
+    },
+    {
+      "districts": [
+        "R",
+        "S"
+      ],
+      "longitude": 114.14534,
+      "latitude": 22.36312,
+      "matches": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "districts": [
+        "S",
+        "T"
+      ],
+      "longitude": 114.10987,
+      "latitude": 22.31173,
+      "matches": [
+        "S",
+        "T"
+      ]
+    }
+  ],
+  "scope": "GEOS on full-resolution official polygons; not browser/PostGIS parity, GPS accuracy, coastline or venue verification"
+}
