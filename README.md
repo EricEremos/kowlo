@@ -4,7 +4,7 @@ Local deletion now requires confirmation for locations, notes and the whole coll
 
 **Status: approved project Goal active; Figma concepts and local feasibility implementation available for review. The production application is not complete.**
 
-Working project name only; Placefold is a proposed brand. The new Figma file exists. [The GitHub repository](https://github.com/EricEremos/hong-kong-footprints) has been created and verified private; the local remote is connected, but code has not been pushed. The Supabase cloud project has not been created.
+Working project name only; Placefold is a proposed brand. The new Figma file exists. [The private GitHub repository](https://github.com/EricEremos/hong-kong-footprints) now contains the local foundation, research, Figma exports and verification evidence on `main`. The initial push was verified against GitHub's commit API; see [repository evidence](docs/evidence/private-repository-baseline.md). The Supabase cloud project has not been created.
 
 1. [Complete proposed project prompt](docs/FULL_PROJECT_PROMPT.md) — the document to approve or correct before work starts.
 2. [Research and evidence](docs/RESEARCH.md) — reference analysis, academic foundations, technical feasibility, geographic data, and limitations.
