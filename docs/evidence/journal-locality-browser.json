@@ -1,17 +1,19 @@
 {
   "status": "passed",
-  "verifiedAt": "2026-09-05T20:23:36.906Z",
+  "verifiedAt": "2026-09-05T20:45:27.231Z",
   "browser": "151.0.7922.34",
   "checks": [
+    "District chapter renders only the actual saved palette, with a named heading and accessible swatch, at desktop and mobile sizes.",
     "Saved coordinates recompute nearby names with method, source pins and uncertainty.",
     "Empty/overlong input rejected; simulated save failure retains draft; retry stores escaped note and separate label without changing GPS, palette or milestones.",
     "Cancel discards only the edit; saving preserves entry ID; reload preserves text, label and original metadata; suggestions are derived, not exported as visits.",
     "Actual JSON and GeoJSON downloads preserve the same snapshot, original coordinates, palette, time and user-authored notes/labels; export controls fit desktop/mobile.",
     "Cancelling deletion preserves saved records, notes and prepared export links.",
+    "A return enriches one district chapter; deleting its coloured record removes those colours, and deleting its last observation removes the chapter while retaining its note.",
     "Cancelling deletion preserves saved records, notes and prepared export links.",
     "Corrupt reference cannot erase notes/GPS or district progress; duplicate district remains one; deletion unlinks notes, removes only the final district instance, and retained notes remain editable/deletable.",
     "Cancelling deletion preserves saved records, notes and prepared export links.",
-    "With server stopped and browser offline, v10 restores suggestions, saves a note/label, downloads matching JSON/GeoJSON, and downloads an empty collection after durable deletion. Orphan notes have null geometry and deletion invalidates prior download links."
+    "With server stopped and browser offline, v11 restores district chapters and suggestions, saves a note/label, downloads matching JSON/GeoJSON, and downloads an empty collection after durable deletion. Orphan notes have null geometry and deletion invalidates prior download links."
   ],
   "offline": {
     "serverStopped": true,
@@ -37,6 +39,8 @@
     ]
   },
   "screenshots": [
+    "docs/evidence/district-chapters-desktop.png",
+    "docs/evidence/district-chapters-mobile.png",
     "docs/evidence/journal-locality-desktop.png",
     "docs/evidence/journal-locality-mobile.png",
     "docs/evidence/journal-geojson-desktop.png",
@@ -47,15 +51,17 @@
   "externalRequests": [],
   "nonGetRequests": [],
   "files": {
-    "experiments/photo-import/journal-panel.mjs": "a6f04e43c0fcef45217b99c4def7755053b2724ee6f56cfa460d489687588eb5",
-    "experiments/photo-import/index.html": "ed65273cdf28bebe093662d2ca27886d4a51298dd307e7c552a5b749dee2b306",
+    "experiments/photo-import/districts.mjs": "f77ba3e49865e146ae7e78ec14ee286fa5e9176a304a0936cce1b32b44885163",
+    "experiments/photo-import/districts.test.mjs": "36f92d2ea524e69eafcd26347a6137501e98cd4672170bb56318a1faa5c64600",
+    "experiments/photo-import/journal-panel.mjs": "c3bfaf914996a69a77f78d5b6b25f6754fc6d46fba2741f9e6896ff6b91ce597",
+    "experiments/photo-import/index.html": "133ca01ec39da0e95e0fa86042765b69d61252db83a69aff761ba1d324450b98",
     "experiments/photo-import/style.css": "638e5f7be69f3f74137ebfc88b27252437c9579268a800198e838b2661897f0f",
-    "experiments/photo-import/offline-worker.mjs": "12f9d0a759e8249273aa2ca88758e2624c0c059ccd08f2d480dc73cc99cf33f7",
-    "experiments/photo-import/offline-worker.test.mjs": "5dbdeb8f02ad4f11d3dbb18611e671b68da5af1a1dace2c3d0ab7776fd68b887",
+    "experiments/photo-import/offline-worker.mjs": "44cd2c03ab41e0f992b24c9454f61e9d69e106500985bffc312fe89814b5d3da",
+    "experiments/photo-import/offline-worker.test.mjs": "681c0657ea168eff400072c339365da8d888e757d4f83380cdd1720dfc45b05e",
     "src/journal/local-journal.mjs": "16da0105f3b018842432ca1251a9e6609ed8870d2dc7b7981b249e11dd640013",
     "src/geography/place-catalog.mjs": "efe8008d7b15f5ab18a018893f504e1c3236405f4b831c4399a6d62b389a93ed",
     "src/geography/nearby-places.mjs": "1ec625c07ebe61696ddb6674d890fb9921b505c304b432e2cd1205eed55ccab5",
-    "scripts/journal-locality-browser-checks.mjs": "4fb8dd1bfb3eabe3962d755df97005cdc852996e08119e06be1c05097b588b61",
+    "scripts/journal-locality-browser-checks.mjs": "a261fcce3c2d4f4819757f4eea2f545dfcc992a9933ae3b74cfbbdba96bc68f9",
     "src/journal/geojson-export.mjs": "341d2c39f3406e71a28adacceee10f170b9073a10d2dc917af242df5c51f8a21",
     "experiments/photo-import/geojson-export.test.mjs": "a8116ea358312e6e01ccd0842c2e232d181e671b594172f0e360098b90b9612c",
     "scripts/serve-diagnostic.py": "aec02b01693ca829a2a88f69c425a425338b30ef3a3ddc485ca622354442499c"

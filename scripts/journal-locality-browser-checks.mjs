@@ -127,6 +127,18 @@ try {
   await importPhoto(page, 'gps-dated.jpg');
   const original = (await exported(page)).observations[0];
   assert.ok(original.palette);
+  assert.equal(await page.locator('#district-chapters > li').count(), 1);
+  assert.match(await page.locator('#district-chapters').innerText(), /1 saved observation · 1 with photo colours/);
+  assert.equal(await page.locator('#district-chapters canvas').getAttribute('aria-label'), `Photo colours: ${[...original.palette.colors].sort().join(', ')}`);
+  for (const [name, width, height] of [['desktop', 1280, 900], ['mobile', 390, 844]]) {
+    await page.setViewportSize({ width, height });
+    await page.locator('#district-chapters-section').scrollIntoViewIfNeeded();
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+    const path = `docs/evidence/district-chapters-${name}.png`;
+    await page.screenshot({ path: `${root}${path}` });
+    screenshots.push(path);
+  }
+  checks.push('District chapter renders only the actual saved palette, with a named heading and accessible swatch, at desktop and mobile sizes.');
   const saved = page.locator('#saved-locations > li').first();
   await saved.locator('summary').click();
   const nearby = await saved.locator('.saved-locality').innerText();
@@ -225,17 +237,23 @@ try {
   await ready(page);
   await importPhoto(page, 'gps-undated.jpg');
   assert.match(await page.locator('#journal-milestones').innerText(), /2 saved observations · 1 \/ 18/);
+  assert.equal(await page.locator('#district-chapters > li').count(), 1);
+  assert.match(await page.locator('#district-chapters').innerText(), /2 saved observations · 1 with photo colours/);
   const deleteOriginal = page.locator(`[data-observation-id="${original.id}"]`).getByRole('button', { name: /^Delete saved location/ });
   await cancelDeletion(page, deleteOriginal, /Linked notes will be kept without coordinates/);
   await deleteDecision(page, deleteOriginal, /district progress will be recalculated/, true);
   await page.locator('#retained-notes-section').waitFor({ state: 'visible' });
   assert.match(await page.locator('#journal-milestones').innerText(), /1 saved observations · 1 \/ 18/);
+  assert.match(await page.locator('#district-chapters').innerText(), /1 saved observation · 0 with photo colours/);
+  assert.equal(await page.locator('#district-chapters canvas').count(), 0);
   snapshot = await exported(page);
   assert.equal(snapshot.journalEntries[0].observationId, null);
   assert.equal(snapshot.journalEntries[0].id, entryId);
   await deleteDecision(page, page.locator('#saved-locations').getByRole('button', { name: /^Delete saved location/ }), /Delete this saved location/, true);
   await page.waitForFunction(() => document.getElementById('journal-milestones').textContent.startsWith('0 saved observations'));
   assert.match(await page.locator('#journal-milestones').innerText(), /0 \/ 18/);
+  assert.equal(await page.locator('#district-chapters-section').isHidden(), true);
+  checks.push('A return enriches one district chapter; deleting its coloured record removes those colours, and deleting its last observation removes the chapter while retaining its note.');
   assert.equal(await page.locator('#geojson-download').isHidden(), true);
   assert.equal(await page.locator('#geojson-download').getAttribute('href'), null);
   const retainedExport = await checkMapDownload(page);
@@ -263,7 +281,7 @@ try {
   await offlinePage.waitForFunction(() => navigator.serviceWorker.controller !== null);
   const assets = await offlinePage.evaluate(async () => {
     const keys = await caches.keys();
-    if (keys.length !== 1 || keys[0] !== 'hk-photo-diagnostic-shell-v10') throw new Error('Unexpected cache release');
+    if (keys.length !== 1 || keys[0] !== 'hk-photo-diagnostic-shell-v11') throw new Error('Unexpected cache release');
     return (await (await caches.open(keys[0])).keys()).map(request => new URL(request.url).pathname);
   });
   assert.equal(assets.length, 18);
@@ -273,6 +291,7 @@ try {
   await offlineContext.setOffline(true);
   await offlinePage.reload();
   await ready(offlinePage);
+  assert.match(await offlinePage.locator('#district-chapters').innerText(), /1 saved observation · 0 with photo colours/);
   await offlinePage.locator('#saved-locations summary').click();
   assert.match(await offlinePage.locator('.saved-locality').innerText(), /m to label point/);
   await offlinePage.getByRole('button', { name: 'Write a note', exact: true }).click();
@@ -293,12 +312,12 @@ try {
   await ready(offlinePage);
   assert.deepEqual(await exported(offlinePage), { schemaVersion: 1, observations: [], journalEntries: [] });
   assert.deepEqual((await checkMapDownload(offlinePage)).features, []);
-  checks.push('With server stopped and browser offline, v10 restores suggestions, saves a note/label, downloads matching JSON/GeoJSON, and downloads an empty collection after durable deletion. Orphan notes have null geometry and deletion invalidates prior download links.');
+  checks.push('With server stopped and browser offline, v11 restores district chapters and suggestions, saves a note/label, downloads matching JSON/GeoJSON, and downloads an empty collection after durable deletion. Orphan notes have null geometry and deletion invalidates prior download links.');
   await offlineContext.close();
   assert.deepEqual(pageErrors, []);
   assert.deepEqual(externalRequests, []);
   assert.deepEqual(nonGetRequests, []);
-  const paths = ['experiments/photo-import/journal-panel.mjs', 'experiments/photo-import/index.html',
+  const paths = ['experiments/photo-import/districts.mjs', 'experiments/photo-import/districts.test.mjs', 'experiments/photo-import/journal-panel.mjs', 'experiments/photo-import/index.html',
     'experiments/photo-import/style.css', 'experiments/photo-import/offline-worker.mjs',
     'experiments/photo-import/offline-worker.test.mjs', 'src/journal/local-journal.mjs',
     'src/geography/place-catalog.mjs', 'src/geography/nearby-places.mjs', 'scripts/journal-locality-browser-checks.mjs',

@@ -1,6 +1,6 @@
 // Bump this release whenever a listed asset changes. Updates wait for old tabs to close.
 const CACHE_PREFIX = 'hk-photo-diagnostic-shell-';
-const CACHE_NAME = `${CACHE_PREFIX}v10`;
+const CACHE_NAME = `${CACHE_PREFIX}v11`;
 const ASSETS = [
   '/experiments/photo-import/index.html',
   '/experiments/photo-import/style.css',

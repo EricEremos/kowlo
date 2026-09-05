@@ -48,3 +48,31 @@ export function createDistrictClassifier(collection) {
 export function countDistrictMilestones(results) {
   return new Set(results.filter(result => result.status === 'accepted' && result.district?.status === 'assigned' && result.district?.milestoneDistrictId).map(result => result.district.milestoneDistrictId)).size;
 }
+
+// Input is the saved snapshot, classified again from its original coordinates.
+// Colours are equally weighted per saved palette, not estimates of photographed area.
+export function districtChapters(results) {
+  const chapters = new Map();
+  const seen = new Set();
+  for (const record of results) {
+    if (!record.id || seen.has(record.id)) continue;
+    seen.add(record.id);
+    const district = record.district;
+    if (record.status !== 'accepted' || district?.status !== 'assigned' || !district.milestoneDistrictId) continue;
+    const match = district.matches[0];
+    let chapter = chapters.get(match.id);
+    if (!chapter) {
+      chapter = { id: match.id, name: match.name, observationCount: 0, paletteCount: 0, votes: new Map() };
+      chapters.set(match.id, chapter);
+    }
+    chapter.observationCount++;
+    if (record.palette?.colors.length) {
+      chapter.paletteCount++;
+      for (const color of new Set(record.palette.colors)) chapter.votes.set(color, (chapter.votes.get(color) ?? 0) + 1);
+    }
+  }
+  return [...chapters.values()].sort((a, b) => a.id.localeCompare(b.id)).map(({ votes, ...chapter }) => ({
+    ...chapter,
+    colors: [...votes].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 3).map(([color]) => color),
+  }));
+}

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { createDistrictClassifier, countDistrictMilestones, DISTRICT_SOURCE_SHA256 } from './districts.mjs';
+import { createDistrictClassifier, countDistrictMilestones, districtChapters, DISTRICT_SOURCE_SHA256 } from './districts.mjs';
 
 const raw = await readFile(new URL('../../data/reference/hk-districts.geojson', import.meta.url));
 const collection = JSON.parse(raw);
@@ -46,4 +46,30 @@ test('malformed and singly unclosed rings fail initialization', () => {
     mutate(broken);
     assert.throws(() => createDistrictClassifier(broken));
   }
+});
+
+test('chapters gather real palettes without duplicate awards, invented colours or retained deletion progress', () => {
+  const record = (id, longitude, latitude, colors) => ({ id, status: 'accepted', district: classify(longitude, latitude),
+    ...(colors ? { palette: { colors } } : {}) });
+  const first = record('a', 114.1589, 22.2819, ['#9F6952', '#637B6F']);
+  const returning = record('b', 114.1589, 22.2819, ['#9F6952', '#D7BD91']);
+  const another = record('c', 114.2, 22.38);
+  const boundary = oracle.cases.find(item => item.matches.length > 1);
+  const records = [first, returning, another, record('edge', boundary.longitude, boundary.latitude, ['#FFFFFF']),
+    record('outside', -70.6, -33.8, ['#000000'])];
+  const original = structuredClone(records);
+  const chapters = districtChapters(records);
+  assert.equal(chapters.length, 2);
+  const central = chapters.find(item => item.id === first.district.milestoneDistrictId);
+  assert.equal(central.observationCount, 2);
+  assert.equal(central.paletteCount, 2);
+  assert.deepEqual(central.colors, ['#9F6952', '#637B6F', '#D7BD91']);
+  assert.deepEqual(chapters.find(item => item.id === another.district.milestoneDistrictId).colors, []);
+  assert.deepEqual(districtChapters([...records, first]), chapters);
+  assert.deepEqual(districtChapters([...records].reverse()), chapters);
+  assert.equal(districtChapters([returning, another]).length, 2);
+  assert.deepEqual(districtChapters([returning])[0].colors, ['#9F6952', '#D7BD91']);
+  assert.equal(districtChapters([another]).length, 1);
+  assert.deepEqual(districtChapters([]), []);
+  assert.deepEqual(records, original);
 });

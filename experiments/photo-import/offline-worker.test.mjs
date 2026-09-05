@@ -26,7 +26,7 @@ function harness({ installFails = false } = {}) {
     },
     caches: {
       open: async () => cache,
-      keys: async () => ['hk-photo-diagnostic-shell-old', 'hk-photo-diagnostic-shell-v1', 'hk-photo-diagnostic-shell-v2', 'hk-photo-diagnostic-shell-v3', 'hk-photo-diagnostic-shell-v4', 'hk-photo-diagnostic-shell-v5', 'hk-photo-diagnostic-shell-v6', 'hk-photo-diagnostic-shell-v7', 'hk-photo-diagnostic-shell-v8', 'hk-photo-diagnostic-shell-v9', 'hk-photo-diagnostic-shell-v10', 'other-application-cache'],
+      keys: async () => ['hk-photo-diagnostic-shell-old', 'hk-photo-diagnostic-shell-v1', 'hk-photo-diagnostic-shell-v2', 'hk-photo-diagnostic-shell-v3', 'hk-photo-diagnostic-shell-v4', 'hk-photo-diagnostic-shell-v5', 'hk-photo-diagnostic-shell-v6', 'hk-photo-diagnostic-shell-v7', 'hk-photo-diagnostic-shell-v8', 'hk-photo-diagnostic-shell-v9', 'hk-photo-diagnostic-shell-v10', 'hk-photo-diagnostic-shell-v11', 'other-application-cache'],
       delete: async name => { removed.push(name); },
     },
     fetch: () => { throw new Error('unexpected network'); },
@@ -74,7 +74,7 @@ test('failed installation removes its cache and rejects activation prerequisite'
   let installation;
   handlers.install({ waitUntil: promise => { installation = promise; } });
   await assert.rejects(installation, /unavailable/);
-  assert.deepEqual(removed, ['hk-photo-diagnostic-shell-v10']);
+  assert.deepEqual(removed, ['hk-photo-diagnostic-shell-v11']);
   assert.equal(claimed(), false);
 });
 
@@ -83,6 +83,6 @@ test('activation retains other application caches and the current release', asyn
   let activation;
   handlers.activate({ waitUntil: promise => { activation = promise; } });
   await activation;
-  assert.deepEqual(removed, ['hk-photo-diagnostic-shell-old', 'hk-photo-diagnostic-shell-v1', 'hk-photo-diagnostic-shell-v2', 'hk-photo-diagnostic-shell-v3', 'hk-photo-diagnostic-shell-v4', 'hk-photo-diagnostic-shell-v5', 'hk-photo-diagnostic-shell-v6', 'hk-photo-diagnostic-shell-v7', 'hk-photo-diagnostic-shell-v8', 'hk-photo-diagnostic-shell-v9']);
+  assert.deepEqual(removed, ['hk-photo-diagnostic-shell-old', 'hk-photo-diagnostic-shell-v1', 'hk-photo-diagnostic-shell-v2', 'hk-photo-diagnostic-shell-v3', 'hk-photo-diagnostic-shell-v4', 'hk-photo-diagnostic-shell-v5', 'hk-photo-diagnostic-shell-v6', 'hk-photo-diagnostic-shell-v7', 'hk-photo-diagnostic-shell-v8', 'hk-photo-diagnostic-shell-v9', 'hk-photo-diagnostic-shell-v10']);
   assert.equal(claimed(), true);
 });

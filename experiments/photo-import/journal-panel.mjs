@@ -1,7 +1,7 @@
 import { LocalJournal } from '../../src/journal/local-journal.mjs';
 import { journalGeoJSON } from '../../src/journal/geojson-export.mjs';
 import { paletteSwatch } from './palette.mjs';
-import { DISTRICT_SOURCE_SHA256, createDistrictClassifier, countDistrictMilestones } from './districts.mjs';
+import { DISTRICT_SOURCE_SHA256, createDistrictClassifier, countDistrictMilestones, districtChapters } from './districts.mjs';
 import { createPlaceCatalog } from '../../src/geography/place-catalog.mjs';
 import { createNearbyPlaceFinder } from '../../src/geography/nearby-places.mjs';
 
@@ -128,6 +128,26 @@ async function render() {
   byId('journal-milestones').textContent = classify
     ? `${results.length} saved observations · ${countDistrictMilestones(results)} / 18 districts represented. Familiar places grow richer; repeated locations count toward the same district.`
     : `${results.length} saved observations. District boundaries unavailable; milestones are not counted.`;
+  const chapters = districtChapters(results);
+  byId('district-chapters').replaceChildren();
+  byId('district-chapters-section').hidden = !chapters.length;
+  for (const chapter of chapters) {
+    const row = document.createElement('li');
+    row.dataset.districtId = chapter.id;
+    const title = document.createElement('h4');
+    title.textContent = chapter.name;
+    const detail = document.createElement('p');
+    detail.textContent = `${chapter.observationCount} saved ${chapter.observationCount === 1 ? 'observation' : 'observations'} · ${chapter.paletteCount} with photo colours`;
+    row.append(title, detail);
+    if (chapter.colors.length) row.append(paletteSwatch(chapter));
+    else {
+      const neutral = document.createElement('p');
+      neutral.className = 'hint';
+      neutral.textContent = 'Your locations are here. Photo colours are optional.';
+      row.append(neutral);
+    }
+    byId('district-chapters').append(row);
+  }
   for (const record of results) {
     const row = document.createElement('li');
     row.dataset.observationId = record.id;
