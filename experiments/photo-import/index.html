@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photo GPS feasibility · Hong Kong Footprints</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./diagnostic.mjs"></script>
+  <script type="module" src="./offline.mjs"></script>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Hong Kong Footprints / technical diagnostic</p>
+    <h1>What location survives your photo import?</h1>
+    <p>This experiment reads selected JPEG and HEIC files in a local worker. Photographs are never uploaded or stored. Accepted coordinates can be saved explicitly to this browser. This diagnostic tests the data pipeline; it is not the planned automatic photo-library experience.</p>
+    <p id="offline-status" class="hint" role="status">Checking offline availability…</p>
+    <section aria-labelledby="import-heading">
+      <h2 id="import-heading">Check a file</h2>
+      <label class="option"><input type="checkbox" id="dates"> Include capture time, when embedded</label>
+      <p class="hint">A missing time zone stays unknown.</p>
+      <label class="option"><input type="checkbox" id="colours"> Derive photo colours locally</label>
+      <p class="hint">Optional: reads image pixels on this device to derive up to three accent colours. Analysis buffers are discarded; only colour codes may be saved. Unsupported images keep their GPS results. With both options unchecked, only GPS is extracted.</p>
+      <label for="files">Choose photos (25 MiB maximum per file)</label>
+      <input type="file" id="files" multiple accept="image/jpeg,image/heic,image/heif,.jpg,.jpeg,.heic,.heif">
+      <div class="actions">
+        <button id="fixtures">Run 10 synthetic fixture checks</button>
+        <button id="cancel" disabled>Cancel remaining files</button>
+      </div>
+      <p id="status" role="status" aria-live="polite">Ready. Nothing selected.</p>
+    </section>
+    <section aria-labelledby="results-heading">
+      <h2 id="results-heading">Import outcomes</h2>
+      <p class="hint">Districts use the verified government boundary dataset, including marine areas. GPS accuracy and specific venues are not verified. No routes or travel distances are inferred.</p>
+      <p class="hint">Nearby names within an exploratory 1 km radius are unconfirmed suggestions. Distances are to government map label points, not neighbourhood boundaries. Suggestions do not earn milestones; saved locations recompute them from verified references when reopened.</p>
+      <p id="milestones" role="status">No districts counted yet.</p>
+      <ol id="results"></ol>
+    </section>
+    <section aria-labelledby="journal-heading">
+      <h2 id="journal-heading">Local journal diagnostic</h2>
+      <p class="hint">Save retains coordinates, optional capture time and opted-in colour codes on this browser and origin. Clearing browser data can erase them. No account sync or backup is provided here. Re-importing a file creates a separate observation; it does not earn another district milestone.</p>
+      <div class="actions">
+        <button id="save-journal" disabled>Save accepted locations locally</button>
+        <button id="export-journal" disabled>Export local journal</button>
+        <button id="clear-journal" disabled>Delete all local diagnostic records</button>
+      </div>
+      <p id="journal-status" role="status" aria-live="polite">Opening local journal…</p>
+      <p id="journal-milestones"></p>
+      <ol id="saved-locations"></ol>
+      <section id="retained-notes-section" hidden aria-labelledby="retained-notes-heading">
+        <h3 id="retained-notes-heading">Notes kept after location deletion</h3>
+        <p class="hint">These notes have no saved coordinates and do not count toward district progress. You can edit or delete them independently.</p>
+        <ol id="retained-notes"></ol>
+      </section>
+      <form id="note-editor" hidden aria-labelledby="note-title">
+        <fieldset id="note-fields">
+          <legend id="note-title">Journal entry</legend>
+          <p id="note-context"></p>
+          <label for="note-text">Your note (up to 4,000 characters)</label>
+          <textarea id="note-text" rows="4"></textarea>
+          <label for="note-place">Your place label (optional, up to 160 characters)</label>
+          <input id="note-place" type="text" aria-describedby="note-place-hint">
+          <p id="note-place-hint" class="hint">A personal label is your description, not a verified venue or a new achievement. Notes and labels are included in journal exports.</p>
+          <div class="actions">
+            <button type="submit">Save note</button>
+            <button type="button" id="cancel-note">Cancel edit</button>
+          </div>
+        </fieldset>
+      </form>
+      <div class="actions journal-downloads">
+        <a id="journal-download" hidden download="photo-location-journal.json">Download journal JSON</a>
+        <a id="geojson-download" hidden download="photo-location-journal.geojson">Download map GeoJSON</a>
+      </div>
+      <pre id="journal-export" hidden></pre>
+    </section>
+    <details><summary>Environment and request evidence</summary><pre id="environment"></pre></details>
+  </main>
+</body>
+</html>

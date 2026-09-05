@@ -1,0 +1,105 @@
+{
+  "dataset_id": "landsd_rcd_1648571595120_89752",
+  "provider": "Survey and Mapping Office, Lands Department, Hong Kong SAR Government",
+  "service_url": "https://portal.csdi.gov.hk/server/rest/services/common/landsd_rcd_1648571595120_89752/FeatureServer",
+  "coordinate_request": "ArcGIS outSR=4326, GeoJSON longitude/latitude",
+  "records": [
+    {
+      "url": "https://portal.csdi.gov.hk/server/rest/services/common/landsd_rcd_1648571595120_89752/FeatureServer/0/query?f=geojson&where=1%3D1&outFields=%2A&outSR=4326&orderByFields=OBJECTID+ASC&resultOffset=0&resultRecordCount=3000&returnGeometry=true",
+      "fetched_at_utc": "2026-09-05T19:38:01.917622+00:00",
+      "sha256": "156ba14a179f8e9454616cb2035877cf64824bb5c31cd4c8e86316ec84e74952",
+      "bytes": 614616,
+      "headers": {
+        "Content-Type": "application/geo+json;charset=UTF-8",
+        "Last-Modified": null,
+        "ETag": "\"84e5eb31\""
+      },
+      "path": "data/reference/hk-place-points.geojson",
+      "count_before": 2706,
+      "count_after": 2706,
+      "feature_count": 2706,
+      "exceeded_transfer_limit": false
+    },
+    {
+      "url": "https://portal.csdi.gov.hk/server/rest/services/common/landsd_rcd_1648571595120_89752/FeatureServer/1000/query?f=json&where=1%3D1&outFields=%2A&outSR=4326&orderByFields=OBJECTID+ASC&resultOffset=0&resultRecordCount=3000&returnGeometry=false",
+      "fetched_at_utc": "2026-09-05T19:38:04.173505+00:00",
+      "sha256": "084ae525b636f94d65c45ad938e313779f0f7b735a74300efee2ee4177c60d33",
+      "bytes": 424266,
+      "headers": {
+        "Content-Type": "application/json;charset=UTF-8",
+        "Last-Modified": null,
+        "ETag": "\"c2b471d2\""
+      },
+      "path": "data/reference/hk-place-names.json",
+      "count_before": 2826,
+      "count_after": 2826,
+      "feature_count": 2826,
+      "exceeded_transfer_limit": false
+    }
+  ],
+  "profile": {
+    "point_count": 2706,
+    "name_count": 2826,
+    "unique_geographic_ids": 2706,
+    "unmatched_point_ids": [],
+    "orphan_name_ids": [],
+    "points_with_multiple_names": 120,
+    "classes": {
+      "Topographic": 796,
+      "Hydrographic": 297,
+      "Settlement": 1613
+    },
+    "types": {
+      "Hill": 315,
+      "Bay": 209,
+      "Pass": 61,
+      "Village": 1299,
+      "River": 22,
+      "Reef": 71,
+      "Area": 301,
+      "Island": 156,
+      "Cape": 165,
+      "Stream": 18,
+      "Town": 13,
+      "Channel": 11,
+      "Strait": 22,
+      "Harbour": 15,
+      "Cave": 4,
+      "Rock": 10,
+      "Valley": 6,
+      "Peninsula": 4,
+      "Islands": 4
+    },
+    "statuses": {
+      "Official": 2706,
+      "Alias": 120
+    },
+    "missing_english": 4,
+    "missing_chinese": 112,
+    "district_codes": {
+      "YL": 280,
+      "KT": 20,
+      "ST": 140,
+      "ILD": 446,
+      "NTH": 484,
+      "SK": 482,
+      "TM": 91,
+      "TP": 366,
+      "TW": 149,
+      "KLC": 11,
+      "CW": 22,
+      "STH": 102,
+      "WC": 18,
+      "WTS": 17,
+      "YTM": 7,
+      "EST": 22,
+      "KC": 39,
+      "SSP": 10
+    }
+  },
+  "limitations": [
+    "Stable counts before and after do not prove transactional snapshot consistency.",
+    "Place points are not neighborhood boundaries or venue footprints.",
+    "NAME_STATUS and PLACE_TYPE semantics require interpretation before production use."
+  ]
+}

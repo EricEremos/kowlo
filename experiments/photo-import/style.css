@@ -1,0 +1,25 @@
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #172c28; background: #f6f4ef; }
+body { margin: 0; }
+main { max-width: 820px; padding: 40px 24px; margin: auto; }
+h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.13; letter-spacing: -.035em; max-width: 700px; }
+p { line-height: 1.6; }
+.eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+section { border-top: 1px solid #c7cec8; margin-top: 32px; padding-top: 12px; }
+.option { display: flex; align-items: center; gap: 10px; min-height: 44px; }
+.hint { color: #4b625b; font-size: 14px; }
+input[type=file] { display: block; margin: 16px 0; max-width: 100%; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.journal-downloads a:not([hidden]) { display: inline-flex; align-items: center; box-sizing: border-box; min-height: 44px; padding: 12px 16px; border: 1px solid #274e43; border-radius: 7px; color: #214f43; text-underline-offset: 3px; }
+button, input::file-selector-button { padding: 12px 16px; min-height: 44px; border: 1px solid #274e43; border-radius: 7px; background: #214f43; color: white; font: inherit; cursor: pointer; }
+button:disabled { background: #e3e6e1; color: #526059; border-color: #aab6ad; cursor: default; }
+:focus-visible { outline: 3px solid #a74421; outline-offset: 4px; }
+li { border-bottom: 1px solid #d5dcd5; padding: 12px 0; }
+canvas[role=img] { display: block; margin: 16px 0 4px; border-radius: 6px; }
+pre { overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
+summary { cursor: pointer; padding: 16px 0; }
+fieldset { min-width: 0; margin: 20px 0; padding: 16px; border: 1px solid #aab6ad; border-radius: 7px; }
+#note-editor label { display: block; margin: 16px 0 8px; }
+#note-editor textarea, #note-editor input { display: block; box-sizing: border-box; width: 100%; min-height: 44px; padding: 10px; border: 1px solid #526059; border-radius: 4px; font: inherit; background: white; color: #172c28; }
+.note-body { white-space: pre-wrap; overflow-wrap: anywhere; }
+#saved-locations p, #retained-notes p { overflow-wrap: anywhere; }
+#saved-locations button, #retained-notes button { margin: 4px 8px 4px 0; }

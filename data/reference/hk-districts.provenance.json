@@ -1,0 +1,307 @@
+{
+  "source": {
+    "url": "https://www.had.gov.hk/psi/hong-kong-administrative-boundaries/hksar_18_district_boundary.json",
+    "source_last_modified_utc": "2026-08-31T03:33:33Z",
+    "source_fetched_at_utc": "2026-09-05T15:49:03.077460+00:00",
+    "fetch_note": "Latest official-source fetch was byte-identical to the local file. Replaces an unsupported midnight fetch timestamp; see docs/evidence/geography-main-audit.json. HTTP Last-Modified is not a legal effective date.",
+    "sha256": "e145cc41230d8215dfb0a797230a0c9671827c018ba608bfc3086966da4735c8",
+    "bytes": 366594,
+    "representative_points": [
+      {
+        "district_id": "A",
+        "district_name": "Central & Western",
+        "representative_point_wgs84": [
+          114.148696,
+          22.274845
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "B",
+        "district_name": "Wan Chai",
+        "representative_point_wgs84": [
+          114.181728,
+          22.273945
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "C",
+        "district_name": "Eastern",
+        "representative_point_wgs84": [
+          114.234038,
+          22.27173
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "D",
+        "district_name": "Southern",
+        "representative_point_wgs84": [
+          114.225227,
+          22.21928
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "E",
+        "district_name": "Yau Tsim Mong",
+        "representative_point_wgs84": [
+          114.165463,
+          22.30738
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "F",
+        "district_name": "Sham Shui Po",
+        "representative_point_wgs84": [
+          114.15931,
+          22.33126
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "G",
+        "district_name": "Kowloon City",
+        "representative_point_wgs84": [
+          114.18874,
+          22.321575
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "H",
+        "district_name": "Wong Tai Sin",
+        "representative_point_wgs84": [
+          114.202048,
+          22.344525
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "J",
+        "district_name": "Kwun Tong",
+        "representative_point_wgs84": [
+          114.22766,
+          22.30865
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "K",
+        "district_name": "Tsuen Wan",
+        "representative_point_wgs84": [
+          114.077635,
+          22.36507
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "L",
+        "district_name": "Tuen Mun",
+        "representative_point_wgs84": [
+          113.952805,
+          22.37888
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "M",
+        "district_name": "Yuen Long",
+        "representative_point_wgs84": [
+          114.021066,
+          22.45702
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "N",
+        "district_name": "North",
+        "representative_point_wgs84": [
+          114.213594,
+          22.516945
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "P",
+        "district_name": "Tai Po",
+        "representative_point_wgs84": [
+          114.304103,
+          22.48097
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "Q",
+        "district_name": "Sai Kung",
+        "representative_point_wgs84": [
+          114.371341,
+          22.30701
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "R",
+        "district_name": "Sha Tin",
+        "representative_point_wgs84": [
+          114.208139,
+          22.391595
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "S",
+        "district_name": "Kwai Tsing",
+        "representative_point_wgs84": [
+          114.104262,
+          22.34098
+        ],
+        "inside": true
+      },
+      {
+        "district_id": "T",
+        "district_name": "Islands",
+        "representative_point_wgs84": [
+          113.987561,
+          22.228305
+        ],
+        "inside": true
+      }
+    ]
+  },
+  "validation": {
+    "engine": {
+      "geometry_library": "shapely",
+      "shapely_version": "2.1.1",
+      "validation_model": "GEOS predicate graph + explain_validity"
+    },
+    "generated_at": "2026-09-05T14:39:24.432906+00:00",
+    "feature_count": 18,
+    "issue_count": 15,
+    "issues": [
+      "zero_length_edge[K:ring0:127]",
+      "zero_length_edge[K:ring0:1476]",
+      "zero_length_edge[K:ring0:499]",
+      "zero_length_edge[M:ring0:1162]",
+      "zero_length_edge[M:ring0:1488]",
+      "zero_length_edge[P:ring0:1104]",
+      "zero_length_edge[P:ring0:1219]",
+      "zero_length_edge[Q:ring0:628]",
+      "zero_length_edge[R:ring0:1476]",
+      "zero_length_edge[R:ring0:565]",
+      "zero_length_edges[K:count=3]",
+      "zero_length_edges[M:count=2]",
+      "zero_length_edges[P:count=2]",
+      "zero_length_edges[Q:count=1]",
+      "zero_length_edges[R:count=2]"
+    ],
+    "bounds": {
+      "lon": {
+        "min": 113.81723,
+        "max": 114.50247
+      },
+      "lat": {
+        "min": 22.13672,
+        "max": 22.56833
+      }
+    },
+    "district_id_missing": [],
+    "adjacency": {
+      "pair_count": 45,
+      "line_shared": 45,
+      "point_shared": 0
+    },
+    "fixtures": [
+      {
+        "fixture_name": "Central (core)",
+        "point_wgs84": [
+          114.154,
+          22.281
+        ],
+        "expected_district": "A",
+        "hit_district_ids": [
+          "A"
+        ],
+        "passes_expected": true,
+        "note": "district town center fallback point"
+      },
+      {
+        "fixture_name": "Sha Tin",
+        "point_wgs84": [
+          114.2,
+          22.38
+        ],
+        "expected_district": "R",
+        "hit_district_ids": [
+          "R"
+        ],
+        "passes_expected": true,
+        "note": "new town residential center"
+      },
+      {
+        "fixture_name": "Tung Chung",
+        "point_wgs84": [
+          113.9439,
+          22.288
+        ],
+        "expected_district": "T",
+        "hit_district_ids": [
+          "T"
+        ],
+        "passes_expected": true,
+        "note": "island area in Lantau"
+      },
+      {
+        "fixture_name": "Cheung Chau",
+        "point_wgs84": [
+          114.028,
+          22.208
+        ],
+        "expected_district": "T",
+        "hit_district_ids": [
+          "T"
+        ],
+        "passes_expected": true,
+        "note": "outlying island urban area"
+      },
+      {
+        "fixture_name": "Outside-HK maritime control",
+        "point_wgs84": [
+          114.4,
+          22.08
+        ],
+        "expected_district": "__outside__",
+        "hit_district_ids": [],
+        "passes_expected": true,
+        "note": "outside HK district boundary"
+      },
+      {
+        "fixture_name": "Offshore control (potentially maritime)",
+        "point_wgs84": [
+          113.95,
+          22.2
+        ],
+        "expected_district": "T",
+        "hit_district_ids": [
+          "T"
+        ],
+        "passes_expected": true,
+        "note": "inside Islands boundary near sea-facing waters"
+      }
+    ],
+    "out_of_hk_controls": {
+      "lon_ok": true,
+      "lat_ok": true,
+      "representative_points_covered": true,
+      "contains_nofeature_point": true,
+      "union_valid": true,
+      "union_type": "Polygon"
+    },
+    "district_name_mismatches": []
+  },
+  "targets": {
+    "data_path": "data/reference/hk-districts.geojson"
+  }
+}

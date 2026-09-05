@@ -1,0 +1,62 @@
+[
+  {
+    "file": "gps-dated.jpg",
+    "status": "accepted",
+    "latitude": 22.2819,
+    "longitude": 114.1589,
+    "districtStatus": "assigned",
+    "districtId": "A"
+  },
+  {
+    "file": "gps-dated.heic",
+    "status": "accepted",
+    "latitude": 22.2819,
+    "longitude": 114.1589,
+    "districtStatus": "assigned",
+    "districtId": "A"
+  },
+  {
+    "file": "gps-undated.jpg",
+    "status": "accepted",
+    "latitude": 22.2819,
+    "longitude": 114.1589,
+    "districtStatus": "assigned",
+    "districtId": "A"
+  },
+  {
+    "file": "gps-no-offset.jpg",
+    "status": "accepted",
+    "latitude": 22.2819,
+    "longitude": 114.1589,
+    "districtStatus": "assigned",
+    "districtId": "A"
+  },
+  {
+    "file": "missing-gps.jpg",
+    "status": "missing-gps"
+  },
+  {
+    "file": "partial-gps.jpg",
+    "status": "malformed-gps"
+  },
+  {
+    "file": "invalid-latitude.jpg",
+    "status": "malformed-gps"
+  },
+  {
+    "file": "southern-western.jpg",
+    "status": "accepted",
+    "latitude": -33.8,
+    "longitude": -70.6,
+    "districtStatus": "outside-dataset",
+    "districtId": null
+  },
+  {
+    "file": "unsupported.png",
+    "status": "unsupported-format"
+  },
+  {
+    "file": "corrupt.jpg",
+    "status": "malformed-file"
+  }
+]

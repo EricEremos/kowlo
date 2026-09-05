@@ -1,0 +1,15 @@
+{
+  "name": "hong-kong-footprints",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test experiments/photo-import/*.test.mjs",
+    "fixtures": "python3 scripts/generate-photo-fixtures.py",
+    "diagnostic": "python3 scripts/serve-diagnostic.py"
+  },
+  "dependencies": {
+    "exifr": "7.1.3",
+    "point-in-polygon-hao": "1.2.4"
+  }
+}
