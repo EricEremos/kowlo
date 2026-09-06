@@ -19,7 +19,7 @@ Paper `#F6F4EF`, ink `#263B3E`, restrained rules and open spacing carry the visu
 ## Verification
 
 - `npm test`: 46 passing Node tests in the existing metadata and geography suite.
-- JavaScript syntax checks for the application and browser driver, Python AST parsing for both changed Python scripts, and `git diff --check`: PASS.
+- JavaScript syntax checks for the application and browser driver, Python AST parsing for both changed Python scripts, and authored-source whitespace checks: PASS. The byte-preserved upstream OFL files use CRLF line endings and trigger Git's default whitespace warning; they are excluded from that whitespace check so their pinned hashes remain intact.
 - [Chromium report](atlas/chromium-checks.json): PASS using isolated synthetic IndexedDB records, without accessing the personal photo library.
 - Four observations produced two distinct districts and two map cells. Repeated coordinates did not inflate district totals. Outside-viewport records remained accessible.
 - Browser navigation, literal HTML note handling, save/reload, draft preservation, deletion cancellation and confirmation, palette recalculation and actual JSON download were exercised.
