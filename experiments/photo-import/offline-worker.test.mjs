@@ -26,7 +26,7 @@ function harness({ installFails = false } = {}) {
     },
     caches: {
       open: async () => cache,
-      keys: async () => ['hk-photo-diagnostic-shell-old', 'hk-photo-diagnostic-shell-v1', 'hk-photo-diagnostic-shell-v2', 'hk-photo-diagnostic-shell-v3', 'hk-photo-diagnostic-shell-v4', 'hk-photo-diagnostic-shell-v5', 'hk-photo-diagnostic-shell-v6', 'hk-photo-diagnostic-shell-v7', 'hk-photo-diagnostic-shell-v8', 'hk-photo-diagnostic-shell-v9', 'hk-photo-diagnostic-shell-v10', 'hk-photo-diagnostic-shell-v11', 'other-application-cache'],
+      keys: async () => ['hk-photo-diagnostic-shell-old', ...Array.from({ length: 12 }, (_, index) => `hk-photo-diagnostic-shell-v${index + 1}`), 'other-application-cache'],
       delete: async name => { removed.push(name); },
     },
     fetch: () => { throw new Error('unexpected network'); },
@@ -56,6 +56,7 @@ test('precache contains static assets only and uses credential-free requests', a
   handlers.install({ waitUntil: promise => { installation = promise; } });
   await installation;
   assert.ok(requests.length > 0);
+  assert.ok(requests.some(request => new URL(request.url).pathname === '/src/geography/memory-print.mjs'));
   for (const request of requests) {
     assert.equal(request.credentials, 'omit');
     assert.equal(request.redirect, 'error');
@@ -74,7 +75,7 @@ test('failed installation removes its cache and rejects activation prerequisite'
   let installation;
   handlers.install({ waitUntil: promise => { installation = promise; } });
   await assert.rejects(installation, /unavailable/);
-  assert.deepEqual(removed, ['hk-photo-diagnostic-shell-v11']);
+  assert.deepEqual(removed, ['hk-photo-diagnostic-shell-v12']);
   assert.equal(claimed(), false);
 });
 
@@ -83,6 +84,6 @@ test('activation retains other application caches and the current release', asyn
   let activation;
   handlers.activate({ waitUntil: promise => { activation = promise; } });
   await activation;
-  assert.deepEqual(removed, ['hk-photo-diagnostic-shell-old', 'hk-photo-diagnostic-shell-v1', 'hk-photo-diagnostic-shell-v2', 'hk-photo-diagnostic-shell-v3', 'hk-photo-diagnostic-shell-v4', 'hk-photo-diagnostic-shell-v5', 'hk-photo-diagnostic-shell-v6', 'hk-photo-diagnostic-shell-v7', 'hk-photo-diagnostic-shell-v8', 'hk-photo-diagnostic-shell-v9', 'hk-photo-diagnostic-shell-v10']);
+  assert.deepEqual(removed, ['hk-photo-diagnostic-shell-old', ...Array.from({ length: 11 }, (_, index) => `hk-photo-diagnostic-shell-v${index + 1}`)]);
   assert.equal(claimed(), true);
 });

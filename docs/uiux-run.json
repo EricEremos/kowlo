@@ -1,0 +1,654 @@
+{
+  "schema_version": "1.0",
+  "run": {
+    "id": "2026-09-06-hong-kong-memory-print",
+    "status": "design",
+    "project": "Placefold",
+    "visual_change": true,
+    "owner": "Main agent"
+  },
+  "contract": {
+    "outcome": "Editable Figma artistic memory atlas",
+    "scope": "Current memory-print direction: atlas, harbour and collection at 320/390/768/1440 px, editable geographic artwork, semantic variables and foundation board; prior privacy drafts preserved.",
+    "primary_job": "Rediscover existing photographs through places and see a personal atlas grow",
+    "authority": "User-authorized Figma refinement; production design approval pending",
+    "assumptions": [
+      "Illustrative folded-mark clusters, photographs, palette and counts; not verified GPS records.",
+      "Automatic library access requires capable native platform; web-only limitation unresolved",
+      "Brand name proposed, not trademark-cleared"
+    ],
+    "success": "Inspect saved renders, check bounds and contrast, record unverified interactions",
+    "input": "User requests artistic geographic accumulation inspired by Footprints, rather than simple photo pins, with minimal visible containers.",
+    "output": "Editable Figma artistic memory atlas",
+    "target_users": [
+      "People rediscovering their existing Hong Kong photographs"
+    ],
+    "product_boundary": "Organize located photographs into a personal atlas, preserving coordinates and distinguishing inferred place names.",
+    "success_metrics": [
+      {
+        "name": "static_visual_integrity",
+        "target": "Four final screen renders and one foundation render inspected; no direct-child screen overflow.",
+        "method": "Inspect saved Figma exports and recorded bounds audit"
+      },
+      {
+        "name": "chapter_comprehension",
+        "target": "Users can find a familiar chapter and explain district coverage",
+        "method": "Representative usability session; not yet performed"
+      }
+    ],
+    "approval_gates": [
+      "User review of revised Figma production nodes",
+      "Native library platform amendment",
+      "Release verification"
+    ]
+  },
+  "research": {
+    "sources": [
+      {
+        "url": "https://www.mplus.org.hk/en/magazine/web-design-is-visual-culture/",
+        "supports": "Hong Kong multilingual visual-culture context; not proof of optimal palette",
+        "id": "SRC-01",
+        "checked_at": "2026-09-06",
+        "class": "exploratory",
+        "supported_claim": "Hong Kong multilingual visual-culture context; not proof of optimal palette",
+        "boundary": "Does not establish optimality or prove this product's usability.",
+        "recheck_trigger": "Source terms, accessibility standard or product platform changes"
+      },
+      {
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "supports": "Contrast criteria; static Figma cannot certify runtime accessibility",
+        "id": "SRC-02",
+        "checked_at": "2026-09-06",
+        "class": "normative",
+        "supported_claim": "Contrast criteria; static Figma cannot certify runtime accessibility",
+        "boundary": "Does not establish optimality or prove this product's usability.",
+        "recheck_trigger": "Source terms, accessibility standard or product platform changes"
+      },
+      {
+        "url": "https://www.naturalearthdata.com/about/terms-of-use/",
+        "supports": "Public-domain overview land geometry; not venue-level evidence",
+        "id": "SRC-03",
+        "checked_at": "2026-09-06",
+        "class": "exploratory",
+        "supported_claim": "Public-domain overview land geometry; not venue-level evidence",
+        "boundary": "Does not establish optimality or prove this product's usability.",
+        "recheck_trigger": "Source terms, accessibility standard or product platform changes"
+      }
+    ],
+    "questions": [
+      {
+        "id": "RQ-01",
+        "question": "How can colour reinforce personal geographic memory while preserving interface readability?",
+        "risk": "Decorative colour obscures navigation or suggests false coverage."
+      }
+    ]
+  },
+  "hypotheses": [
+    {
+      "decision": "Geographic memory print with folded marks",
+      "reason": "Matches requested geographic accumulation reward",
+      "status": "proposed",
+      "falsifier": "Users cannot find a familiar chapter or understand coverage",
+      "id": "H-01",
+      "question_id": "RQ-01",
+      "evidence_ids": [
+        "SRC-01",
+        "SRC-02"
+      ],
+      "test": "Ask users to open a familiar chapter and explain that 7/18 means districts with photographs, not complete area exploration; distinguish illustrative print from precise coordinate evidence."
+    }
+  ],
+  "experience": {
+    "primary_loop": "Atlas → place chapter → photographs → richer chapter after another visit",
+    "coverage": "District has at least one located photo, not complete exploration",
+    "viewports": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "states": [
+      "Recorded atlas",
+      "Place chapter",
+      "Return growth"
+    ],
+    "deferred": [
+      "Permission and empty/error states",
+      "Production preference persistence, export success and destructive confirmation/completion",
+      "Dense marker overlap behaviour",
+      "Compact/tablet chapter flows and desktop collection/privacy compositions",
+      "Real-data mark density and geographic legibility at different zoom levels"
+    ],
+    "objects": [
+      {
+        "name": "Located photograph",
+        "identity_fields": [
+          "record ID"
+        ],
+        "decision_fields": [
+          "coordinates",
+          "place confidence",
+          "local palette"
+        ]
+      },
+      {
+        "name": "Place chapter",
+        "identity_fields": [
+          "district ID"
+        ],
+        "decision_fields": [
+          "photograph count",
+          "representative photograph"
+        ]
+      }
+    ],
+    "required_states": [
+      "ready",
+      "empty",
+      "error",
+      "permission"
+    ],
+    "required_viewports": [
+      "mobile",
+      "intermediate",
+      "desktop"
+    ],
+    "routes": [
+      {
+        "id": "atlas",
+        "path": "/",
+        "primary_task": "Find a place represented in existing photographs",
+        "primary_action": "Open chapter",
+        "states": [
+          {
+            "id": "ready",
+            "permission": "Private user-owned records",
+            "required_content": [
+              "Located photograph records",
+              "Place names with uncertainty",
+              "Photograph count"
+            ],
+            "recovery": "Return to atlas",
+            "evidence_treatment": "Illustrative Figma data; coordinates must remain distinct from inferred names"
+          }
+        ],
+        "state_exemptions": {
+          "empty": "Deferred from this bounded visual revision; required before production approval.",
+          "error": "Deferred from this bounded visual revision; required before production approval.",
+          "permission": "Native platform decision pending; must be designed before production approval."
+        },
+        "viewport_behavior": {
+          "mobile": "Open geographic print with heading, coverage and chapter link; 24 px gutters",
+          "intermediate": "768 px central print with open split summary; static render inspected",
+          "desktop": "Open editorial left column and large geographic print; harbour CTA opens dedicated 1440 px chapter"
+        }
+      },
+      {
+        "id": "chapter",
+        "path": "/chapter",
+        "primary_task": "Rediscover photographs around a place",
+        "primary_action": "Your atlas",
+        "states": [
+          {
+            "id": "ready",
+            "permission": "Private user-owned records",
+            "required_content": [
+              "Located photograph records",
+              "Place names with uncertainty",
+              "Photograph count"
+            ],
+            "recovery": "Return to atlas",
+            "evidence_treatment": "Illustrative Figma data; coordinates must remain distinct from inferred names"
+          }
+        ],
+        "state_exemptions": {
+          "empty": "Deferred from this bounded visual revision; required before production approval.",
+          "error": "Deferred from this bounded visual revision; required before production approval.",
+          "permission": "Native platform decision pending; must be designed before production approval."
+        },
+        "viewport_behavior": {
+          "mobile": "Single column, map above chapter preview; 24 px gutters",
+          "intermediate": "Planned; dedicated composition pending",
+          "desktop": "Planned; dedicated composition pending"
+        }
+      },
+      {
+        "id": "collection",
+        "path": "/collection",
+        "primary_task": "Understand how the atlas has grown",
+        "primary_action": "Atlas",
+        "states": [
+          {
+            "id": "ready",
+            "permission": "Private user-owned records",
+            "required_content": [
+              "Located photograph records",
+              "Place names with uncertainty",
+              "Photograph count"
+            ],
+            "recovery": "Return to atlas",
+            "evidence_treatment": "Illustrative Figma data; coordinates must remain distinct from inferred names"
+          }
+        ],
+        "state_exemptions": {
+          "empty": "Deferred from this bounded visual revision; required before production approval.",
+          "error": "Deferred from this bounded visual revision; required before production approval.",
+          "permission": "Native platform decision pending; must be designed before production approval."
+        },
+        "viewport_behavior": {
+          "mobile": "Single column, map above chapter preview; 24 px gutters",
+          "intermediate": "Planned; dedicated composition pending",
+          "desktop": "Planned; dedicated composition pending"
+        }
+      }
+    ]
+  },
+  "art_direction": {
+    "selected": "Geographic memory print",
+    "alternatives": [
+      {
+        "name": "Cinematic archive",
+        "rejected_because": "Makes geography secondary"
+      },
+      {
+        "name": "Editorial journal",
+        "rejected_because": "Introduces sequential reading and navigation"
+      }
+    ],
+    "palette": {
+      "paper": "#F6F4EF",
+      "ink": "#263B3E",
+      "muted": "#566969",
+      "line": "#D4D9D0",
+      "accent": "#9A6959",
+      "slate": "#5A717A",
+      "lavender": "#7D7890",
+      "ochre": "#AE8961",
+      "forest": "#48605E"
+    },
+    "type": {
+      "display": "Newsreader Regular 40/42 mobile; 60/62 desktop",
+      "section": "Newsreader Regular 26/30",
+      "brand": "Space Grotesk Medium 22/28",
+      "number": "Space Grotesk Medium 36/42",
+      "body": "DM Sans 16/24",
+      "label": "DM Sans 14/20",
+      "metadata": "DM Sans 12/16"
+    },
+    "photo_palette": [
+      "#9A6959",
+      "#5A717A",
+      "#7D7890",
+      "#AE8961",
+      "#48605E"
+    ],
+    "motion": "Static prototype transitions",
+    "directions": [
+      {
+        "id": "DIR-A",
+        "thesis": "Map-first photographic atlas",
+        "signature_moment": "A place gains another visible photograph after a return visit",
+        "asset_plan": [
+          "Licensed photographs and Natural Earth overview geography"
+        ],
+        "task_risk": "Dense markers can obscure geography",
+        "reduced_motion": "Show final photo arrangement immediately"
+      },
+      {
+        "id": "DIR-B",
+        "thesis": "Photo-first cinematic contact sheet with location filters",
+        "signature_moment": "Location filtering reveals a group of photographic memories",
+        "asset_plan": [
+          "Licensed photographic contact sheet"
+        ],
+        "task_risk": "Geographic accumulation becomes secondary",
+        "reduced_motion": "Static filtered grid"
+      },
+      {
+        "id": "DIR-C",
+        "thesis": "Chronological editorial field journal with map index",
+        "signature_moment": "A dated story opens into a place chapter",
+        "asset_plan": [
+          "Licensed photographs with editorial typography"
+        ],
+        "task_risk": "Sequential reading adds navigation",
+        "reduced_motion": "Static dated chapters"
+      },
+      {
+        "id": "DIR-D",
+        "thesis": "Geographic memory print with folded marks and photographic place chapters",
+        "signature_moment": "Located memories enrich the city print and revisits deepen a chapter",
+        "asset_plan": [
+          "Editable vector marks on overview Hong Kong geography",
+          "Illustrative licensed harbour photograph",
+          "Production optional local photo-derived palette"
+        ],
+        "task_risk": "Artistic density can be confused with complete exploration or precise GPS evidence",
+        "reduced_motion": "Show the same final print without transitional growth"
+      }
+    ],
+    "selected_direction": "DIR-D",
+    "selection_reason": "Latest user direction prioritizes artistic geographic accumulation over simple photograph pins. A print composition preserves geography and gives it a distinct folded texture.",
+    "rejected_reasons": {
+      "DIR-B": "Geography becomes secondary",
+      "DIR-C": "Sequential reading and repeated navigation",
+      "DIR-A": "Photograph pins do not provide the requested artistic expression."
+    },
+    "palette_provenance": "Curated illustrative colours; not extracted from user photos. Production extraction requires optional local visual analysis."
+  },
+  "figma": {
+    "file_url": "https://www.figma.com/design/whw3t850Pcj9LrSiBa8rwn/Hong-Kong-Footprints?node-id=116-112",
+    "pages": [
+      "76:2",
+      "76:3",
+      "76:4"
+    ],
+    "screens": [
+      "116:112",
+      "116:113",
+      "116:114",
+      "116:115"
+    ],
+    "foundations": [
+      "130:91"
+    ],
+    "approved_nodes": [],
+    "approval_status": "awaiting-user-design-review",
+    "saved_navigation_links": 14,
+    "previous_revision": {
+      "screens": [
+        "78:2",
+        "78:3",
+        "78:4",
+        "78:5",
+        "78:6",
+        "78:7"
+      ],
+      "foundations": [
+        "83:38",
+        "83:106"
+      ],
+      "saved_navigation_links": 17
+    },
+    "artwork_master": "114:63",
+    "semantic_collection": "115:63"
+  },
+  "traceability": [
+    {
+      "screen": "Atlas",
+      "figma_nodes": [
+        "116:112",
+        "116:115"
+      ],
+      "evidence": [
+        "memory-print-atlas.png",
+        "memory-print-desktop.png"
+      ],
+      "route_id": "atlas",
+      "state_id": "ready",
+      "figma_node": "116:112",
+      "code_paths": [],
+      "data_dependencies": [
+        "Local located photographs",
+        "District classification",
+        "Optional local image palette"
+      ],
+      "accessibility_contract": [
+        "Text labels accompany colour",
+        "Readable contrast",
+        "48 px navigation frames; runtime semantics pending",
+        "Production keyboard and screen-reader verification pending"
+      ],
+      "tests": []
+    },
+    {
+      "screen": "Chapter",
+      "figma_nodes": [
+        "116:113"
+      ],
+      "evidence": [
+        "memory-print-chapter.png"
+      ],
+      "route_id": "chapter",
+      "state_id": "ready",
+      "figma_node": "116:113",
+      "code_paths": [],
+      "data_dependencies": [
+        "Local located photographs",
+        "District classification",
+        "Optional local image palette"
+      ],
+      "accessibility_contract": [
+        "Text labels accompany colour",
+        "Readable contrast",
+        "48 px navigation frames; runtime semantics pending",
+        "Production keyboard and screen-reader verification pending"
+      ],
+      "tests": []
+    },
+    {
+      "screen": "Collection",
+      "figma_nodes": [
+        "116:114"
+      ],
+      "evidence": [
+        "memory-print-collection.png"
+      ],
+      "route_id": "collection",
+      "state_id": "ready",
+      "figma_node": "116:114",
+      "code_paths": [],
+      "data_dependencies": [
+        "Local located photographs",
+        "District classification",
+        "Optional local image palette"
+      ],
+      "accessibility_contract": [
+        "Text labels accompany colour",
+        "Readable contrast",
+        "48 px navigation frames; runtime semantics pending",
+        "Production keyboard and screen-reader verification pending"
+      ],
+      "tests": []
+    }
+  ],
+  "qa": {
+    "privacy_revision": {
+      "roots": ["94:31", "103:81", "103:127", "103:173"],
+      "width": 390,
+      "visible_text_nodes": 64,
+      "minimum_font_px": 12,
+      "text_overflow": 0,
+      "fonts": ["Newsreader", "Space Grotesk", "DM Sans"],
+      "navigation": "Atlas and Chapters targets corrected to visible 114 by 48 px bounds and current artistic destinations; obsolete hidden links cleared. Preference destinations preserved.",
+      "renders": ["memory-print-you.png", "memory-print-you-colours.png", "memory-print-you-dates.png", "memory-print-you-options-on.png"],
+      "live_verification": "Blocked: Mac locked; automatic unlock failed. Static render and reaction evidence only."
+    },
+    "renders": "Twelve screen renders and one foundation render visually inspected. Latest five are compact/tablet harbour and compact/tablet/desktop collection; compact wrapping defects corrected and re-rendered.",
+    "bounds": "Original four roots: no direct-child overflow and 57 text nodes audited. First responsive three: no visible direct-child overflow and 41 text nodes. Latest five: no visible direct-child overflow and 71 visible text nodes. Not a runtime responsive test.",
+    "contrast": [
+      {
+        "name": "ink/paper",
+        "ratio": 10.75,
+        "minimum": 4.5
+      },
+      {
+        "name": "secondary/paper",
+        "ratio": 5.28,
+        "minimum": 4.5
+      }
+    ],
+    "navigation": "Original 14 saved navigation reactions inspected. Latest responsive extension updates 22 reactions to matching-width atlas/harbour/collection destinations; saved targets inspected. Standard navigation frames 48 px high. New browser click tests blocked by locked Mac and failed automatic unlock.",
+    "live_clickthrough": "Core mobile loop verified in Figma browser: Atlas CTA → Harbour → back Atlas; Chapters → Collection → A richer harbour → Harbour → back Atlas. Desktop extension verified: Atlas 116:115 CTA → Harbour 139:105 → Your atlas → Atlas 116:115. Preview uses scale-down and hide-ui. Earlier preference loop separately verified; not all links live clicked.",
+    "score": null,
+    "score_reason": "No 100/100 claim without user and runtime validation",
+    "independent_review": {
+      "required": false,
+      "status": "not-started",
+      "reviewer": null,
+      "reason": "Bounded static revision; independent release review remains outstanding."
+    },
+    "unverified": [
+      "Real device and library access",
+      "Real EXIF/GPS",
+      "Keyboard and screen-reader behaviour",
+      "Performance",
+      "Production design-code fidelity",
+      "Real photo-derived palette and growth transitions",
+      "Live clicks through latest responsive destinations, responsive privacy layouts and real responsive implementation"
+    ],
+    "evidence_directory": "docs/evidence/figma",
+    "scenarios": [
+      {
+        "id": "QA-atlas-mobile",
+        "route_id": "atlas",
+        "viewport": "mobile",
+        "state_id": "ready",
+        "task": "Find a place represented in existing photographs",
+        "expected": "Readable composition and working navigation to the corresponding place records",
+        "status": "planned",
+        "evidence": null
+      },
+      {
+        "id": "QA-atlas-intermediate",
+        "route_id": "atlas",
+        "viewport": "intermediate",
+        "state_id": "ready",
+        "task": "Find a place represented in existing photographs",
+        "expected": "Readable composition and working navigation to the corresponding place records",
+        "status": "planned",
+        "evidence": null
+      },
+      {
+        "id": "QA-atlas-desktop",
+        "route_id": "atlas",
+        "viewport": "desktop",
+        "state_id": "ready",
+        "task": "Find a place represented in existing photographs",
+        "expected": "Readable composition and working navigation to the corresponding place records",
+        "status": "planned",
+        "evidence": null
+      },
+      {
+        "id": "QA-chapter-mobile",
+        "route_id": "chapter",
+        "viewport": "mobile",
+        "state_id": "ready",
+        "task": "Rediscover photographs around a place",
+        "expected": "Readable composition and working navigation to the corresponding place records",
+        "status": "planned",
+        "evidence": null
+      },
+      {
+        "id": "QA-chapter-intermediate",
+        "route_id": "chapter",
+        "viewport": "intermediate",
+        "state_id": "ready",
+        "task": "Rediscover photographs around a place",
+        "expected": "Readable composition and working navigation to the corresponding place records",
+        "status": "planned",
+        "evidence": null
+      },
+      {
+        "id": "QA-chapter-desktop",
+        "route_id": "chapter",
+        "viewport": "desktop",
+        "state_id": "ready",
+        "task": "Rediscover photographs around a place",
+        "expected": "Readable composition and working navigation to the corresponding place records",
+        "status": "planned",
+        "evidence": null
+      },
+      {
+        "id": "QA-collection-mobile",
+        "route_id": "collection",
+        "viewport": "mobile",
+        "state_id": "ready",
+        "task": "Understand how the atlas has grown",
+        "expected": "Readable composition and working navigation to the corresponding place records",
+        "status": "planned",
+        "evidence": null
+      },
+      {
+        "id": "QA-collection-intermediate",
+        "route_id": "collection",
+        "viewport": "intermediate",
+        "state_id": "ready",
+        "task": "Understand how the atlas has grown",
+        "expected": "Readable composition and working navigation to the corresponding place records",
+        "status": "planned",
+        "evidence": null
+      },
+      {
+        "id": "QA-collection-desktop",
+        "route_id": "collection",
+        "viewport": "desktop",
+        "state_id": "ready",
+        "task": "Understand how the atlas has grown",
+        "expected": "Readable composition and working navigation to the corresponding place records",
+        "status": "planned",
+        "evidence": null
+      }
+    ],
+    "scores": {
+      "product_clarity": 1,
+      "information_hierarchy": 2,
+      "state_completeness": 1,
+      "responsive_behavior": 1,
+      "accessibility": 1,
+      "visual_craft": 2,
+      "content_integrity": 1,
+      "motion": 0,
+      "performance": 0,
+      "design_code_fidelity": 0
+    },
+    "score_basis": "Provisional owner assessment of static design only: 0 indicates absent runtime evidence, not a measured failure. 1 reflects open gaps; 2 reflects coherent inspected visual structure. No aggregate quality score or user validation is claimed.",
+    "blockers": [
+      {
+        "id": "B-01",
+        "status": "open",
+        "description": "Production design approval, permission and empty/error states, real-data mark density, responsive privacy layouts and live clicks through new responsive destinations pending."
+      },
+      {
+        "id": "B-02",
+        "status": "open",
+        "description": "Native automatic-library platform decision and device verification pending"
+      },
+      {
+        "id": "B-03",
+        "status": "open",
+        "description": "Runtime accessibility, all-route live coverage and production code fidelity remain unverified."
+      }
+    ],
+    "evidence": [
+      "docs/evidence/figma/memory-print-atlas.png",
+      "docs/evidence/figma/memory-print-chapter.png",
+      "docs/evidence/figma/memory-print-collection.png",
+      "docs/evidence/figma/memory-print-desktop.png",
+      "docs/evidence/figma/memory-print-foundation.png"
+    ]
+  },
+  "learning": {
+    "pattern": "Geographic folded-mark artwork with stable semantic controls and optional decorative photo-derived colours",
+    "status": "Project hypothesis; not promoted as proven",
+    "next_measurement": "Observe users opening a place chapter and explaining 7/18 district coverage without interpreting it as full-area exploration.",
+    "patterns": [
+      {
+        "id": "PAT-01",
+        "name": "Geographic folded-mark artwork with stable semantic controls and optional decorative photo-derived colours",
+        "status": "proposed",
+        "contexts": [
+          "Placefold static Figma revision"
+        ],
+        "evidence_ids": [
+          "SRC-02"
+        ],
+        "failure_modes": [
+          "Low contrast if photo colours are reused for essential text",
+          "Decorative swatches mistaken for percentage coverage",
+          "Artwork mistaken for exact GPS or complete territorial coverage"
+        ]
+      }
+    ]
+  }
+}

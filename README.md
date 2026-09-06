@@ -1,6 +1,58 @@
-# Hong Kong Footprints — research and approval packet
+# KOWLO
 
-Saved observations now form district chapters using their actual opted-in photo palettes. Returns enrich one chapter; deletion recalculates its colours and district count. [District chapter evidence](docs/evidence/district-chapters.md) records 42 passing Node checks and desktop/mobile/offline Chromium verification. The latest diagnostic shell is v11 with 18 static assets; older evidence below records the versions tested at the time.
+**Hong Kong, in your colours.**
+
+A private photo atlas of Hong Kong, shaped by the photographs you keep and the places you return to. Folded marks give the city its form; colours from your photographs make it yours.
+
+![KOWLO — Hong Kong, in your colours. An editorial title beside a Hong Kong silhouette made from folded marks. Illustrative atlas artwork.](docs/design-assets/portfolio-cover.png)
+
+**Independent project · In development**
+
+Product design, geographic data and local-first engineering. Explore the proposed experience and the working foundations behind it.
+
+[Explore the case study](docs/PORTFOLIO.md) · [View in Figma](https://www.figma.com/design/whw3t850Pcj9LrSiBa8rwn/Hong-Kong-Footprints?node-id=166-147) · [Brand direction](docs/KOWLO_IDENTITY.md)
+
+## The experience
+
+Start with the whole city. Move into a district chapter, then return to the places and photographs that give it meaning. Repeat visits deepen a chapter; they do not inflate the number of districts visited. Original location evidence stays separate from suggested place names and personal labels.
+
+## Design backed by working foundations
+
+| Product idea | Existing implementation and evidence | Remaining boundary |
+| --- | --- | --- |
+| A personal memory print | [Deterministic cells from saved GPS and optional palettes](docs/evidence/memory-print-pipeline.md) | Production interface integration |
+| Districts become chapters | [Grouping, distinct district counts and colour recalculation after deletion](docs/evidence/district-chapters.md) | Final product flow and device verification |
+| Memories remain under your control | [Local storage and offline behaviour](docs/evidence/offline-shell.md), [export](docs/evidence/journal-geojson-export.md), [explicit deletion](docs/evidence/deletion-confirmation.md) | Production installation and account experience |
+| Private sync handles uncertainty | [Identity checks, revision conflicts and interrupted requests](docs/evidence/authenticated-sync-transport.md) | Live hosted authentication and end-to-end sync |
+
+These links record checks performed at specific development stages. They are evidence of those scoped behaviours, not a claim that the complete product has shipped.
+
+## Explore locally
+
+```sh
+npm ci
+npm test
+npm run diagnostic
+```
+
+Open the [photo-import diagnostic](http://127.0.0.1:8787/experiments/photo-import/index.html) and run **Run 10 synthetic fixture checks**. This is the working feasibility surface; the Figma presentation shows the proposed product experience.
+
+## Project context
+
+[Research](docs/RESEARCH.md) · [Architecture](docs/ARCHITECTURE_AND_DESIGN.md) · [Approved project brief](docs/FULL_PROJECT_PROMPT.md) · [Photo-library scope](docs/AUTOMATIC_LIBRARY_AMENDMENT.md)
+
+This public portfolio brings together the design process and implementation evidence. The complete application, automatic photo-library flow and hosted sync are still in development. The screenshots use illustrative content; private journal records are not part of the portfolio.
+
+[Visual and data credits](ATTRIBUTION.md) · [Product milestones](docs/PORTFOLIO.md#public-portfolio-and-product-milestones)
+
+<details>
+<summary>Technical development log and historical verification evidence</summary>
+
+These records preserve earlier development stages, names and repository visibility. KOWLO is the current identity; references to Placefold, Kongloom or a private repository below describe earlier work.
+
+The artistic atlas now has a tested data foundation: saved GPS observations form deterministic memory-print cells, retain original coordinates, and derive accents only from optional saved photo palettes. [Memory-print evidence](docs/evidence/memory-print-pipeline.md) records 46 passing Node checks and a real Chromium extraction/storage/deletion driver. This module is not yet wired to the production interface. [The current Figma direction](docs/ATLAS_DESIGN_REVISION.md) remains available for approval.
+
+Saved observations now form district chapters using their actual opted-in photo palettes. Returns enrich one chapter; deletion recalculates its colours and district count. [District chapter evidence](docs/evidence/district-chapters.md) records 42 passing Node checks and desktop/mobile/offline Chromium verification. The latest diagnostic shell is v12 with 19 static assets, including the memory-print data module verified through a server-off reload and deletion. Older evidence below records the versions tested at the time.
 
 Local deletion now requires confirmation for locations, notes and the whole collection. Cancelling preserves records and prepared downloads; confirmed deletion is verified through offline reload. See [deletion confirmation evidence](docs/evidence/deletion-confirmation.md).
 
@@ -43,3 +95,5 @@ Saved locations now regain nearby-name context from verified references and supp
 Enable **Derive photo colours locally** to extract and optionally save up to three decorative accents. GPS survives unavailable image decoding. [Palette evidence](docs/evidence/local-photo-palettes.md) records 23 current Node tests, 18 IndexedDB checks, browser opt-in/opt-out, exact reload persistence and deletion. Colour extraction is an initial histogram heuristic; complex-photo aesthetic quality and native phone thumbnails remain unverified.
 
 The photo-import diagnostic now has an [offline shell](docs/evidence/offline-shell.md). After its first successful online load displays **Offline shell ready**, it can reopen saved records without the local server. Reopening, export generation and deletion were verified with the server stopped. The cache contains only an explicit list of application resources and reference geography, not photos or journal data. Synthetic fixture downloads still require the server. The [v7 verification](docs/evidence/nearby-place-suggestions.md) adds offline photo import and nearby references; the current Node suite passes 41 checks. This is infrastructure for the approved offline draft requirement; production installation, approved UI and device verification remain incomplete.
+
+</details>

@@ -1,0 +1,11 @@
+{
+  "geography": [
+    "hong-kong-land.svg",
+    "../../data/reference/hk-districts.geojson"
+  ],
+  "method": "Coastal land intersected with Hong Kong district outer boundaries; deterministic staggered chevron lattice.",
+  "marks": 3658,
+  "colour_semantics": "Illustrative memory clusters. Colour and area are not GPS accuracy, verified photo positions, travel routes, or territorial coverage.",
+  "production_requirement": "Use verified asset locations for membership. Optional local photo palette analysis supplies colour. Exact point evidence remains separately inspectable.",
+  "style": "Folded mark print, not a photograph pin map or a reproduction of the reference dot pattern."
+}

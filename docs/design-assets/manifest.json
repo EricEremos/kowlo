@@ -1,0 +1,40 @@
+{
+  "photos": [
+    {
+      "name": "street",
+      "source": "https://unsplash.com/photos/u4dA6ufkXrI",
+      "author": "Joel Fulgencio",
+      "license": "Unsplash License",
+      "usage": "Illustrative design only; no verified photo GPS",
+      "sha256": "8d4b67c98ef738ccdaa239912d601a15da604e13c6b00d0e217feea2dc97de0c"
+    },
+    {
+      "name": "harbour",
+      "source": "https://unsplash.com/photos/epaE0jEOc0Y",
+      "author": "Yuanlong Zhu",
+      "license": "Unsplash License",
+      "usage": "Illustrative design only; no verified photo GPS",
+      "sha256": "676225c5b8e02f0da836f76c58c1de9f1258cbd78d0e65e47d4358c3d2e46293"
+    },
+    {
+      "name": "ferry",
+      "source": "https://unsplash.com/photos/eYHV5JNysO4",
+      "author": "Jimmy Whitson",
+      "license": "Unsplash License",
+      "usage": "Illustrative design only; no verified photo GPS",
+      "sha256": "4aa1671b45fc61fa4e7e753f801461b936dc43404670f323806f773bd9bf6916"
+    }
+  ],
+  "map": {
+    "source": "https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_10m_land.geojson",
+    "license": "Public domain",
+    "source_sha256": "1ac90796408bc6ad6911d69448485d3c4dbf2190370080368a09976e1c9f7416",
+    "bounds": [
+      113.92,
+      22.16,
+      114.43,
+      22.56
+    ],
+    "purpose": "Overview coastline illustration; not venue accuracy"
+  }
+}

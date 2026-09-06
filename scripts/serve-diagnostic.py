@@ -12,6 +12,7 @@ STATIC_FILES = {
     ROOT / "data/reference/hk-place-names.json",
     ROOT / "src/geography/place-catalog.mjs",
     ROOT / "src/geography/nearby-places.mjs",
+    ROOT / "src/geography/memory-print.mjs",
     ROOT / "src/journal/local-journal.mjs",
     ROOT / "src/journal/geojson-export.mjs",
 }

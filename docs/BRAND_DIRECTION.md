@@ -1,5 +1,7 @@
 # Brand direction: Placefold
 
+Historical first proposal. Kongloom was subsequently proposed and rejected by the user. See the current [naming shortlist](BRAND_NAMING_SHORTLIST.md); no replacement name is approved.
+
 Status: first design proposal for user review, 5 September 2026. External project names are not yet changed.
 
 ## Recommendation

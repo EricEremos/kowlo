@@ -1,6 +1,6 @@
 // Bump this release whenever a listed asset changes. Updates wait for old tabs to close.
 const CACHE_PREFIX = 'hk-photo-diagnostic-shell-';
-const CACHE_NAME = `${CACHE_PREFIX}v11`;
+const CACHE_NAME = `${CACHE_PREFIX}v12`;
 const ASSETS = [
   '/experiments/photo-import/index.html',
   '/experiments/photo-import/style.css',
@@ -15,6 +15,7 @@ const ASSETS = [
   '/src/journal/geojson-export.mjs',
   '/src/geography/place-catalog.mjs',
   '/src/geography/nearby-places.mjs',
+  '/src/geography/memory-print.mjs',
   '/data/reference/hk-place-points.geojson',
   '/data/reference/hk-place-names.json',
   '/node_modules/exifr/dist/full.esm.mjs',
