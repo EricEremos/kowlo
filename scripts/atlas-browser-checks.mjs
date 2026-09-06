@@ -104,7 +104,7 @@ try {
   checks.push('Cancel preserves memory; confirmed deletion removes its colours while preserving the remaining district and detached note; downloaded export reflects current saved data.');
   await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
   const reference = await page.evaluate(async () => {
-    const cache = await caches.open('kowlo-atlas-shell-v1');
+    const cache = await caches.open('kowlo-atlas-shell-v2');
     const response = await cache.match('/data/reference/hk-districts.geojson');
     const body = await response.text();
     await cache.put('/data/reference/hk-districts.geojson', new Response('{}'));
@@ -117,7 +117,7 @@ try {
   assert.equal(await page.locator('.memory-list li').count(), 3);
   checks.push('Corrupted offline reference fails the hash check and suppresses unverified district achievements without hiding any saved record.');
   await page.evaluate(async body => {
-    const cache = await caches.open('kowlo-atlas-shell-v1');
+    const cache = await caches.open('kowlo-atlas-shell-v2');
     await cache.put('/data/reference/hk-districts.geojson', new Response(body, { headers: { 'Content-Type': 'application/json' } }));
   }, reference);
   for (const width of [320,390,768,1440]) {

@@ -48,7 +48,7 @@ With Playwright and its Chromium runtime available, run `node scripts/atlas-brow
 
 ## Remaining boundaries
 
-Automatic phone photo-library scanning, native permission handling, production installation, hosted authentication/sync and physical-device verification are unfinished. This preview now has separately verified [offline support](atlas-offline.md), including a server-off reload, note editing, JSON download, deletion and worker updates.
+Automatic phone photo-library scanning, native permission handling, production installation, hosted authentication/sync and physical-device verification are unfinished. This preview now has separately verified [offline support](atlas-offline.md), including a server-off reload, note editing, JSON download, deletion and worker updates, plus [local Chromium installation and a standalone offline relaunch](atlas-installation.md).
 
 WebKit verification was attempted but could not launch because the Playwright WebKit runtime was absent. Safari and iOS behaviour therefore remain unverified. Automatic editor diagnostics were unavailable because the configured language servers were not installed; executable tests, syntax checks and browser checks supply the scoped evidence instead.
 

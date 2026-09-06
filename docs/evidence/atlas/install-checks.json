@@ -1,0 +1,42 @@
+{
+  "result": "PASS",
+  "browser": "151.0.7922.34",
+  "checks": [
+    "Chromium parses the manifest without errors, reports no installability errors, and receives the correct manifest MIME type.",
+    "All three PNGs decode at their declared dimensions; opaque icons keep the entire Harbour K inside the maskable safe circle.",
+    "An actual isolated Chromium PWA installation launches in standalone display mode and reads the same saved local journal.",
+    "After closing the app and terminating the server, a fresh standalone launch restores the coloured atlas and district navigation."
+  ],
+  "icons": [
+    {
+      "size": 180,
+      "width": 180,
+      "height": 180,
+      "maxRadius": 0.3810519876394173,
+      "transparent": 0,
+      "foreground": 4746
+    },
+    {
+      "size": 192,
+      "width": 192,
+      "height": 192,
+      "maxRadius": 0.37933332532403335,
+      "transparent": 0,
+      "foreground": 5329
+    },
+    {
+      "size": 512,
+      "width": 512,
+      "height": 512,
+      "maxRadius": 0.38117725115982176,
+      "transparent": 0,
+      "foreground": 37529
+    }
+  ],
+  "errors": [],
+  "violations": [],
+  "standalone": true,
+  "serverStopped": true,
+  "testInstallationRemoved": true,
+  "data": "Isolated temporary browser profile and synthetic location only."
+}

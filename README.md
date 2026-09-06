@@ -39,6 +39,8 @@ Open the [working KOWLO atlas](http://127.0.0.1:8787/app/index.html) to explore 
 
 After the atlas displays **Ready offline**, it can reopen saved chapters, edit notes, export JSON and confirm local deletion without the server, in that same browser and origin. [Offline verification](docs/evidence/atlas-offline.md) records preparation failure, update handling and the static cache boundary.
 
+The atlas now includes installation metadata and KOWLO icons. [Local Chromium installation verification](docs/evidence/atlas-installation.md) records an actual standalone app launch and a fresh offline relaunch with saved district colours. Production hosting and phone installation remain unverified; installation does not grant automatic photo-library access.
+
 The [photo-import diagnostic](http://127.0.0.1:8787/experiments/photo-import/index.html) remains available for technical feasibility checks, including **Run 10 synthetic fixture checks**. The Figma presentation remains the proposed design source.
 
 ## Project context

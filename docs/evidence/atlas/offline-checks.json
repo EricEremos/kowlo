@@ -7,14 +7,18 @@
     "After all atlas tabs close, the update activates and removes only its obsolete cache; saved journal and diagnostic cache survive.",
     "With the server confirmed stopped, a full reload restores the coloured atlas, district, fonts and original GPS; offline note edits survive reload.",
     "Offline deletion cancellation preserves the memory; confirmation removes its mark and district after reload. Actual JSON download retains the detached note.",
-    "Cache remains exactly 14 static resources. Queries, private endpoints, POST and authenticated requests are not served from the cache. No page errors."
+    "Cache remains exactly 18 static resources. Queries, private endpoints, POST and authenticated requests are not served from the cache. No page errors."
   ],
   "cachePaths": [
     "/app/atlas.mjs",
     "/app/fonts/dmsans.ttf",
     "/app/fonts/newsreader.ttf",
     "/app/fonts/spacegrotesk.ttf",
+    "/app/icons/kowlo-180.png",
+    "/app/icons/kowlo-192.png",
+    "/app/icons/kowlo-512.png",
     "/app/index.html",
+    "/app/manifest.webmanifest",
     "/app/offline.mjs",
     "/app/styles.css",
     "/data/reference/hk-districts.geojson",

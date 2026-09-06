@@ -1,0 +1,16 @@
+{
+  "id": "/app/",
+  "name": "KOWLO",
+  "short_name": "KOWLO",
+  "description": "Hong Kong, in your colours. Your private photo atlas.",
+  "lang": "en",
+  "start_url": "/app/index.html#atlas",
+  "scope": "/app/",
+  "display": "standalone",
+  "background_color": "#f6f4ef",
+  "theme_color": "#f6f4ef",
+  "icons": [
+    { "src": "icons/kowlo-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/kowlo-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

@@ -21,7 +21,7 @@ STATIC_FILES = {
 
 
 class DiagnosticHandler(SimpleHTTPRequestHandler):
-    extensions_map = {**SimpleHTTPRequestHandler.extensions_map, ".mjs": "text/javascript"}
+    extensions_map = {**SimpleHTTPRequestHandler.extensions_map, ".mjs": "text/javascript", ".webmanifest": "application/manifest+json"}
 
     def do_GET(self):
         path = urlsplit(self.path).path
@@ -41,7 +41,8 @@ class DiagnosticHandler(SimpleHTTPRequestHandler):
         atlas = urlsplit(self.path).path.startswith('/app/')
         images = "'self'" if atlas else "'none'"
         fonts = "'self'" if atlas else "'none'"
-        self.send_header("Content-Security-Policy", f"default-src 'none'; script-src 'self'; worker-src 'self'; style-src 'self'; connect-src {connect}; img-src {images}; font-src {fonts}; form-action 'none'; frame-ancestors 'none'; base-uri 'none'")
+        manifest = "'self'" if atlas else "'none'"
+        self.send_header("Content-Security-Policy", f"default-src 'none'; script-src 'self'; worker-src 'self'; style-src 'self'; connect-src {connect}; img-src {images}; font-src {fonts}; manifest-src {manifest}; form-action 'none'; frame-ancestors 'none'; base-uri 'none'")
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Referrer-Policy", "no-referrer")
