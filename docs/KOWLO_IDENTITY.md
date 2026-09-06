@@ -27,6 +27,8 @@ Coordinates determine location. Colour affects expression, never the validity of
 
 ## Design record
 
+The [editable Harbour K symbol study](KOWLO_SYMBOL_STUDY.md) adds a three-part vector mark, an app-icon application, monochrome size proofs and a KOWLO atlas preview. This is a design proposal; the existing palette and illustrative geographic artwork remain in use.
+
 [Portfolio](PORTFOLIO.md) · [Memory-print system](ATLAS_DESIGN_REVISION.md) · [Naming exploration](BRAND_NAMING_SHORTLIST.md)
 
 The earlier naming studies remain as historical design evidence. Selection for this project does not establish trademark, domain or commercial-name clearance.
