@@ -40,6 +40,7 @@ function cancel() {
   sequence++;
   active = false;
   worker?.terminate();
+  worker = undefined;
   rejectPending?.(new Error('cancelled'));
   rejectPending = undefined;
   byId('cancel').disabled = true;
@@ -49,10 +50,11 @@ function cancel() {
 }
 
 function parseFile(file, includeCaptureTime, id, type = 'metadata') {
+  worker ??= createWorker();
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => {
       worker.terminate();
-      worker = createWorker();
+      worker = undefined;
       rejectPending = undefined;
       resolve({ status: 'parse-timeout' });
     }, 10000);
@@ -65,6 +67,8 @@ function parseFile(file, includeCaptureTime, id, type = 'metadata') {
     };
     worker.onerror = () => {
       clearTimeout(timer);
+      worker.terminate();
+      worker = undefined;
       rejectPending = undefined;
       resolve({ status: 'worker-error' });
     };
