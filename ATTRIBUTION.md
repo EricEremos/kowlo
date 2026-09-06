@@ -26,6 +26,6 @@ Government reference data are provided as-is. Inclusion does not imply endorseme
 
 ## Typography and software
 
-Designs use Newsreader, DM Sans and Space Grotesk. Font binaries are not distributed in this repository. Software dependency licenses remain with their respective authors; the installed dependency metadata identifies those terms.
+Designs and the working web preview use Newsreader, DM Sans and Space Grotesk. The preview serves the fonts locally. Pinned source URLs and SHA-256 hashes are recorded in [the font manifest](app/fonts/sources.json); each font's SIL Open Font License is included beside its binary in [app/fonts](app/fonts). Software dependency licenses remain with their respective authors; the installed dependency metadata identifies those terms.
 
 A repository-wide software license has not been selected. Public availability of this portfolio should not be read as a separate grant of reuse rights. Third-party asset and data terms apply independently.

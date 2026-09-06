@@ -70,6 +70,7 @@ def write(name, stages, view='0 0 1000 845', width=1000, height=845):
     svg += '</svg>'
     (ROOT / name).write_text(svg)
 
+write('memory-print-empty.svg', 0)
 write('memory-print-hong-kong.svg', 9)
 write('memory-print-first-chapter.svg', 3)
 write('memory-print-harbour.svg', 9, '370 455 280 200', 560, 400)

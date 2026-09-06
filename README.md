@@ -20,7 +20,7 @@ Start with the whole city. Move into a district chapter, then return to the plac
 
 | Product idea | Existing implementation and evidence | Remaining boundary |
 | --- | --- | --- |
-| A personal memory print | [Deterministic cells from saved GPS and optional palettes](docs/evidence/memory-print-pipeline.md) | Production interface integration |
+| A personal memory print | [Working atlas preview](docs/evidence/atlas-preview.md) using deterministic cells from saved GPS and optional palettes | Final design approval and production delivery |
 | Districts become chapters | [Grouping, distinct district counts and colour recalculation after deletion](docs/evidence/district-chapters.md) | Final product flow and device verification |
 | Memories remain under your control | [Local storage and offline behaviour](docs/evidence/offline-shell.md), [export](docs/evidence/journal-geojson-export.md), [explicit deletion](docs/evidence/deletion-confirmation.md) | Production installation and account experience |
 | Private sync handles uncertainty | [Identity checks, revision conflicts and interrupted requests](docs/evidence/authenticated-sync-transport.md) | Live hosted authentication and end-to-end sync |
@@ -35,7 +35,9 @@ npm test
 npm run diagnostic
 ```
 
-Open the [photo-import diagnostic](http://127.0.0.1:8787/experiments/photo-import/index.html) and run **Run 10 synthetic fixture checks**. This is the working feasibility surface; the Figma presentation shows the proposed product experience.
+Open the [working KOWLO atlas](http://127.0.0.1:8787/app/index.html) to explore saved locations, district chapters, notes and local export. It reads the journal saved on this same browser and origin; an empty journal correctly shows an uncoloured map. Automatic phone photo-library connection is still in development. [Preview verification and screenshots](docs/evidence/atlas-preview.md) describe the tested scope.
+
+The [photo-import diagnostic](http://127.0.0.1:8787/experiments/photo-import/index.html) remains available for technical feasibility checks, including **Run 10 synthetic fixture checks**. The Figma presentation remains the proposed design source.
 
 ## Project context
 

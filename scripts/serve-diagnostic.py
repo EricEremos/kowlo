@@ -15,6 +15,8 @@ STATIC_FILES = {
     ROOT / "src/geography/memory-print.mjs",
     ROOT / "src/journal/local-journal.mjs",
     ROOT / "src/journal/geojson-export.mjs",
+    ROOT / "docs/design-assets/memory-print-empty.svg",
+    ROOT / "docs/design-assets/kowlo-symbol.svg",
 }
 
 
@@ -24,7 +26,7 @@ class DiagnosticHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         path = urlsplit(self.path).path
         resolved = Path(self.translate_path(path)).resolve()
-        allowed = [ROOT / "experiments/photo-import", ROOT / "experiments/offline-journal"]
+        allowed = [ROOT / "experiments/photo-import", ROOT / "experiments/offline-journal", ROOT / "app"]
         if not (any(resolved.is_relative_to(directory) for directory in allowed) or resolved in STATIC_FILES):
             self.send_error(404)
             return
@@ -36,7 +38,10 @@ class DiagnosticHandler(SimpleHTTPRequestHandler):
     def end_headers(self):
         worker = urlsplit(self.path).path == "/experiments/photo-import/worker.mjs"
         connect = "'none'" if worker else "'self'"
-        self.send_header("Content-Security-Policy", f"default-src 'none'; script-src 'self'; worker-src 'self'; style-src 'self'; connect-src {connect}; img-src 'none'; form-action 'none'; frame-ancestors 'none'; base-uri 'none'")
+        atlas = urlsplit(self.path).path.startswith('/app/')
+        images = "'self'" if atlas else "'none'"
+        fonts = "'self'" if atlas else "'none'"
+        self.send_header("Content-Security-Policy", f"default-src 'none'; script-src 'self'; worker-src 'self'; style-src 'self'; connect-src {connect}; img-src {images}; font-src {fonts}; form-action 'none'; frame-ancestors 'none'; base-uri 'none'")
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Referrer-Policy", "no-referrer")
