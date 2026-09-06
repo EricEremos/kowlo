@@ -6,7 +6,7 @@
     "Four real IndexedDB records produce two distinct districts and two map cells; repeated coordinates do not inflate district totals; outside-viewport memory remains listed.",
     "Atlas → chapters → district → memory navigation works; original coordinates and timezone survive; authored label and literal HTML note persist after reload.",
     "Cancel preserves memory; confirmed deletion removes its colours while preserving the remaining district and detached note; downloaded export reflects current saved data.",
-    "Reference hash mismatch suppresses unverified district achievements without hiding any saved record.",
+    "Corrupted offline reference fails the hash check and suppresses unverified district achievements without hiding any saved record.",
     "All five route types fit 320/390/768/1440px viewports; keyboard skip link moves focus into the main content.",
     "No browser errors, external requests or non-GET requests; repository/configuration remain outside the local static allowlist."
   ],

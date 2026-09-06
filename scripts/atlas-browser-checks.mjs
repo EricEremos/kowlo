@@ -102,14 +102,24 @@ try {
   assert.equal(await page.locator('.number').innerText(), '02 / 18');
   assert.equal(await page.locator('.mark[stroke="#9A6959"]').count(), 0);
   checks.push('Cancel preserves memory; confirmed deletion removes its colours while preserving the remaining district and detached note; downloaded export reflects current saved data.');
-  await page.route('**/data/reference/hk-districts.geojson', route => route.fulfill({ status: 200, body: '{}' }));
+  await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
+  const reference = await page.evaluate(async () => {
+    const cache = await caches.open('kowlo-atlas-shell-v1');
+    const response = await cache.match('/data/reference/hk-districts.geojson');
+    const body = await response.text();
+    await cache.put('/data/reference/hk-districts.geojson', new Response('{}'));
+    return body;
+  });
   await go('atlas');
   assert.equal(await page.locator('.number').innerText(), '— / 18');
   await page.getByRole('link', { name: /3 locations without a district chapter/ }).click();
   await page.locator('.memory-list').waitFor();
   assert.equal(await page.locator('.memory-list li').count(), 3);
-  checks.push('Reference hash mismatch suppresses unverified district achievements without hiding any saved record.');
-  await page.unroute('**/data/reference/hk-districts.geojson');
+  checks.push('Corrupted offline reference fails the hash check and suppresses unverified district achievements without hiding any saved record.');
+  await page.evaluate(async body => {
+    const cache = await caches.open('kowlo-atlas-shell-v1');
+    await cache.put('/data/reference/hk-districts.geojson', new Response(body, { headers: { 'Content-Type': 'application/json' } }));
+  }, reference);
   for (const width of [320,390,768,1440]) {
     await page.setViewportSize({ width, height: 900 });
     for (const route of ['atlas','chapters',`memory/${ids[1]}`,'you','unassigned']) {

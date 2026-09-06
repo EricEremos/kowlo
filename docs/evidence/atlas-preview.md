@@ -1,6 +1,6 @@
 # KOWLO working atlas preview
 
-Verified 6 September 2026. This is a local interface integration preview, not a completed or installed production application.
+Initially verified 6 September 2026; [atlas offline support](atlas-offline.md) verified 7 September 2026. This is a local interface integration preview, not a completed or installed production application.
 
 ## Implemented experience
 
@@ -48,7 +48,7 @@ With Playwright and its Chromium runtime available, run `node scripts/atlas-brow
 
 ## Remaining boundaries
 
-Automatic phone photo-library scanning, native permission handling, production installation, this preview's offline shell, hosted authentication/sync and physical-device verification are unfinished. The existing diagnostic's offline checks do not establish offline support for this new `/app/` surface.
+Automatic phone photo-library scanning, native permission handling, production installation, hosted authentication/sync and physical-device verification are unfinished. This preview now has separately verified [offline support](atlas-offline.md), including a server-off reload, note editing, JSON download, deletion and worker updates.
 
 WebKit verification was attempted but could not launch because the Playwright WebKit runtime was absent. Safari and iOS behaviour therefore remain unverified. Automatic editor diagnostics were unavailable because the configured language servers were not installed; executable tests, syntax checks and browser checks supply the scoped evidence instead.
 

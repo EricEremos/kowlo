@@ -8,6 +8,7 @@
   <link rel="icon" href="/docs/design-assets/kowlo-symbol.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
   <script type="module" src="./atlas.mjs"></script>
+  <script type="module" src="./offline.mjs"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to your atlas</a>
@@ -16,7 +17,7 @@
     <main id="main" tabindex="-1"><h1>A city taking shape.</h1><p>Opening your local memories…</p></main>
     <p id="status" role="status" aria-live="polite"></p>
     <nav aria-label="Main navigation"><a href="#atlas">Atlas</a><a href="#chapters">Chapters</a><a href="#you">You</a></nav>
-    <footer>Working preview · saved on this browser</footer>
+    <footer><p id="offline-status" role="status">Preparing offline access…</p>Working preview · saved on this browser</footer>
   </div>
 </body>
 </html>

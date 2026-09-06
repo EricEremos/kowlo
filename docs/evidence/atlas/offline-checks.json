@@ -1,0 +1,31 @@
+{
+  "result": "PASS",
+  "browser": "Chromium",
+  "checks": [
+    "Failed asset preparation leaves no partial cache or false ready state; the online journal still opens.",
+    "An update waits while the atlas is open, preserves an unsaved note, and asks the user to save before closing tabs.",
+    "After all atlas tabs close, the update activates and removes only its obsolete cache; saved journal and diagnostic cache survive.",
+    "With the server confirmed stopped, a full reload restores the coloured atlas, district, fonts and original GPS; offline note edits survive reload.",
+    "Offline deletion cancellation preserves the memory; confirmation removes its mark and district after reload. Actual JSON download retains the detached note.",
+    "Cache remains exactly 14 static resources. Queries, private endpoints, POST and authenticated requests are not served from the cache. No page errors."
+  ],
+  "cachePaths": [
+    "/app/atlas.mjs",
+    "/app/fonts/dmsans.ttf",
+    "/app/fonts/newsreader.ttf",
+    "/app/fonts/spacegrotesk.ttf",
+    "/app/index.html",
+    "/app/offline.mjs",
+    "/app/styles.css",
+    "/data/reference/hk-districts.geojson",
+    "/docs/design-assets/kowlo-symbol.svg",
+    "/docs/design-assets/memory-print-empty.svg",
+    "/experiments/photo-import/districts.mjs",
+    "/node_modules/point-in-polygon-hao/dist/pointInPolygon.js",
+    "/src/geography/memory-print.mjs",
+    "/src/journal/local-journal.mjs"
+  ],
+  "serverStopped": true,
+  "errors": [],
+  "data": "Synthetic isolated browser records; no personal photos accessed."
+}
