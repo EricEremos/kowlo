@@ -9,7 +9,7 @@ main{min-height:60vh;padding:24px 0}main:focus{outline:none}h1,h2,h3,p,figure{ma
 
 /* Approved Figma component 215:235: paper glass with an opaque ink selection. */
 html{scroll-padding-bottom:calc(112px + env(safe-area-inset-bottom, 0px))}
-body{padding-bottom:calc(112px + env(safe-area-inset-bottom, 0px))}
+body{padding-top:env(safe-area-inset-top, 0px);padding-right:env(safe-area-inset-right, 0px);padding-bottom:calc(112px + env(safe-area-inset-bottom, 0px));padding-left:env(safe-area-inset-left, 0px)}
 .main-navigation{
   position:fixed;
   z-index:10;

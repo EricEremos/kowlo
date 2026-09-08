@@ -1,6 +1,6 @@
 // Bump the release when any listed asset changes. Updates wait for open tabs to close.
 const CACHE_PREFIX = 'kowlo-atlas-shell-';
-const CACHE_NAME = `${CACHE_PREFIX}v5`;
+const CACHE_NAME = `${CACHE_PREFIX}v6`;
 const ASSETS = [
   '/app/index.html',
   '/app/manifest.webmanifest',
