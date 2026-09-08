@@ -7,7 +7,9 @@
     "Atlas → chapters → district → memory navigation works; original coordinates and timezone survive; authored label and literal HTML note persist after reload.",
     "Cancel preserves memory; confirmed deletion removes its colours while preserving the remaining district and detached note; downloaded export reflects current saved data.",
     "Corrupted offline reference fails the hash check and suppresses unverified district achievements without hiding any saved record.",
+    "Floating navigation fits four widths with 48px targets; bottom content clears the bar on all five routes. Keyboard focus is visible and keyboard/pointer activation updates the selected destination.",
     "All five route types fit 320/390/768/1440px viewports; keyboard skip link moves focus into the main content.",
+    "Rapid tab changes settle on the correct selection. Reduced motion cancels active effects and removes navigation transitions. Storage explanations remain available on demand.",
     "No browser errors, external requests or non-GET requests; repository/configuration remain outside the local static allowlist."
   ],
   "errors": [],

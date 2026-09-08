@@ -20,7 +20,7 @@ const server = spawn('python3', ['-u', '-c', [
   "  if state == 'fail' and self.path == '/app/fonts/newsreader.ttf':",
   "   self.send_error(503); return",
   "  if state == 'update' and self.path == '/app/offline-worker.mjs':",
-  "   body = (ROOT / 'app/offline-worker.mjs').read_text().replace('v2', 'v3').encode()",
+  "   body = (ROOT / 'app/offline-worker.mjs').read_text().replace('v4', 'v5').encode()",
   "   self.send_response(200); self.send_header('Content-Type', 'text/javascript'); self.end_headers(); self.wfile.write(body); return",
   '  super().do_GET()',
   "server = ThreadingHTTPServer(('127.0.0.1', 0), partial(TestHandler, directory=str(ROOT)))",
@@ -62,7 +62,7 @@ try {
   await page.goto(`${origin}/app/index.html#atlas`); await ready();
   await page.waitForFunction(() => document.querySelector('#offline-status').textContent.includes('Ready offline'));
   const cachePaths = await page.evaluate(async () => {
-    const cache = await caches.open('kowlo-atlas-shell-v2');
+    const cache = await caches.open('kowlo-atlas-shell-v4');
     return (await cache.keys()).map(request => new URL(request.url).pathname).sort();
   });
   assert.equal(cachePaths.length, 18);
@@ -84,15 +84,15 @@ try {
   await page.waitForFunction(() => document.querySelector('#offline-status').textContent.includes('Save any edits'));
   assert.match(await page.locator('#offline-status').innerText(), /Save any edits/);
   assert.equal(await page.getByLabel('A note to return to').inputValue(), 'A draft kept through the update.');
-  assert(await page.evaluate(async () => (await caches.keys()).includes('kowlo-atlas-shell-v2')));
+  assert(await page.evaluate(async () => (await caches.keys()).includes('kowlo-atlas-shell-v4')));
   await page.getByRole('button', { name: 'Save memory', exact: true }).click();
   await page.waitForFunction(() => document.querySelector('#status').textContent.includes('Memory saved'));
   checks.push('An update waits while the atlas is open, preserves an unsaved note, and asks the user to save before closing tabs.');
   await page.close();
   page = await context.newPage(); observe(page);
   await page.goto(`${origin}/app/index.html#atlas`); await ready();
-  await page.waitForFunction(async () => !(await caches.keys()).includes('kowlo-atlas-shell-v2'));
-  assert.deepEqual((await page.evaluate(() => caches.keys())).sort(), ['hk-photo-diagnostic-shell-sentinel', 'kowlo-atlas-shell-v3']);
+  await page.waitForFunction(async () => !(await caches.keys()).includes('kowlo-atlas-shell-v4'));
+  assert.deepEqual((await page.evaluate(() => caches.keys())).sort(), ['hk-photo-diagnostic-shell-sentinel', 'kowlo-atlas-shell-v5']);
   assert.equal(await page.locator('.number').innerText(), '01 / 18');
   checks.push('After all atlas tabs close, the update activates and removes only its obsolete cache; saved journal and diagnostic cache survive.');
   await stopServer();
@@ -115,6 +115,7 @@ try {
   await page.waitForFunction(() => document.querySelector('#status').textContent.includes('Memory saved'));
   await page.reload(); await ready();
   assert.equal(await page.getByLabel('A note to return to').inputValue(), 'Written without a connection.');
+  await page.getByText('Location details', { exact: true }).click();
   assert.match(await page.locator('dl').innerText(), /22.2819, 114.1588/);
   checks.push('With the server confirmed stopped, a full reload restores the coloured atlas, district, fonts and original GPS; offline note edits survive reload.');
   page.once('dialog', dialog => dialog.dismiss());
@@ -146,7 +147,7 @@ try {
     return results;
   });
   assert.deepEqual(forbidden, Array(4).fill('unavailable'));
-  const retained = await page.evaluate(async () => (await (await caches.open('kowlo-atlas-shell-v3')).keys()).map(request => new URL(request.url).pathname).sort());
+  const retained = await page.evaluate(async () => (await (await caches.open('kowlo-atlas-shell-v5')).keys()).map(request => new URL(request.url).pathname).sort());
   assert.deepEqual(retained, cachePaths);
   assert.deepEqual(errors, []);
   checks.push('Cache remains exactly 18 static resources. Queries, private endpoints, POST and authenticated requests are not served from the cache. No page errors.');

@@ -12,7 +12,7 @@ async function prepareOffline() {
       if (registration.waiting) {
         status.textContent = 'An update is ready. Save any edits, then close all atlas tabs and reopen. Your saved memories stay here.';
       } else if (navigator.serviceWorker.controller) {
-        status.textContent = 'Ready offline. Your saved atlas travels with you.';
+        status.textContent = 'Ready offline.';
       } else if (failed) {
         status.textContent = 'Offline preparation did not finish. Reopen with a connection to try again.';
       } else {

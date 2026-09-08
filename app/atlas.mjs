@@ -6,7 +6,20 @@ const main = document.querySelector('main');
 const status = document.querySelector('#status');
 const journal = new LocalJournal();
 const svgNS = 'http://www.w3.org/2000/svg';
-let classify, ready = false, revision = 0, exportURL;
+let classify, ready = false, revision = 0, exportURL, renderedRoute;
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const motion = new Set();
+function stopMotion() {
+  for (const animation of motion) animation.cancel();
+  motion.clear();
+}
+reducedMotion.addEventListener('change', stopMotion);
+function animate(node, frames, options) {
+  if (reducedMotion.matches || !node?.animate) return;
+  const animation = node.animate(frames, options);
+  motion.add(animation);
+  animation.finished.then(() => motion.delete(animation), () => motion.delete(animation));
+}
 const el = (tag, text, className) => {
   const node = document.createElement(tag);
   if (text !== undefined) node.textContent = text;
@@ -57,7 +70,7 @@ function map(snapshot) {
     drawing.append(group);
   }
   const caption = el('figcaption');
-  caption.append(el('span', 'HONG KONG'), el('span', `${count(print.marks.length, 'memory mark')} · explore below`));
+  caption.append(el('span', 'HONG KONG'), el('span', count(print.marks.length, 'memory mark')));
   figure.append(drawing, caption);
   if (print.outsideViewport.length) figure.append(el('p', `${count(print.outsideViewport.length, 'location')} beyond this cropped overview. All remain in your memory lists.`, 'notice'));
   return figure;
@@ -88,34 +101,35 @@ function memoryRows(records, snapshot) {
   return list;
 }
 function sourceNotice() {
-  return el('p', 'Marks group saved coordinates for an artistic overview. They do not measure area explored or GPS accuracy. Colours come from optional photo palettes; uncoloured memories still count.', 'notice');
+  const disclosure = el('details');
+  disclosure.append(el('summary', 'How your atlas works'), el('p', 'Marks group photo coordinates; they do not measure area explored or GPS accuracy. Saved photo colours make each mark yours. Locations without colours still count.', 'notice'));
+  return disclosure;
 }
 function atlas(snapshot, chapters, unassigned) {
   const layout = el('div', undefined, 'atlas-layout');
-  layout.append(heading('Hong Kong,\nin your colours.', 'A city slowly becoming yours.'), map(snapshot));
+  layout.append(heading('Hong Kong,\nin your colours.'), map(snapshot));
   const details = el('section', undefined, 'atlas-details');
   const summary = el('div', undefined, 'summary');
   const total = el('div', undefined, 'district-total');
   total.append(el('strong', classify ? `${String(chapters.length).padStart(2, '0')} / 18` : '— / 18', 'number'), el('span', classify ? 'districts with memories' : 'district data unavailable', 'count-label'));
   summary.append(total, el('p', count(snapshot.observations.length, 'saved photo location')));
   details.append(summary);
-  if (chapters.length) details.append(link(chapters[0].name, `#district/${chapters[0].id}`, 'text-link chapter-title'), el('p', 'Return to a chapter of your city.', 'notice'));
+  if (chapters.length) details.append(link(chapters[0].name, `#district/${chapters[0].id}`, 'text-link chapter-title'));
   else {
     const empty = el('div', undefined, 'empty');
     empty.append(el('h2', snapshot.observations.length ? 'Your memories are here.' : 'Your Hong Kong begins with you.'), el('p', snapshot.observations.length ? 'Explore your saved locations below. District matches will appear when the reference data is available.' : 'Your existing photographs will give this city its colours. The automatic phone-library connection is still being built.', 'notice'));
     details.append(empty);
   }
   if (unassigned.length) details.append(link(`${count(unassigned.length, 'location')} without a district chapter`, '#unassigned', 'text-link'));
-  details.append(link('Explore all chapters', '#chapters', 'text-link'), sourceNotice());
+  details.append(link('Explore all chapters', '#chapters', 'text-link'));
   layout.append(details);
   main.append(layout);
 }
 function collection(snapshot, chapters, unassigned) {
-  main.append(heading('Every return leaves a little more.', 'Familiar places grow richer, too.'));
+  main.append(heading('Your chapters.'));
   if (chapters.length) main.append(chapterRows(chapters));
   else main.append(el('p', snapshot.observations.length ? 'No confirmed district chapters yet.' : 'Your first chapter is waiting for your photographs.'));
   if (unassigned.length) main.append(link(`${count(unassigned.length, 'location')} without a confirmed district`, '#unassigned', 'text-link'));
-  main.append(sourceNotice());
 }
 function district(id, snapshot, classified, chapters) {
   const chapter = chapters.find(item => item.id === id);
@@ -125,9 +139,10 @@ function district(id, snapshot, classified, chapters) {
   const layout = el('div', undefined, 'atlas-layout');
   layout.append(heading(chapter.name, `${count(records.length, 'saved location')} in this chapter.`), map({ ...snapshot, observations: records }));
   const detail = el('div', undefined, 'atlas-details');
-  detail.append(el('h2', 'The colours you left here.'), el('p', chapter.paletteCount ? `${count(chapter.paletteCount, 'location')} with a saved photo palette.` : 'These memories have no saved photo colours.'), palettes(chapter.colors));
+  detail.append(el('h2', 'Your colours.'), palettes(chapter.colors));
+  if (!chapter.paletteCount) detail.append(el('p', 'No photo colours saved yet.'));
   layout.append(detail);
-  main.append(layout, memoryRows(records, snapshot), sourceNotice());
+  main.append(layout, memoryRows(records, snapshot));
 }
 function missing() {
   main.append(heading('This memory has moved on.', 'It may have been removed from this browser.'), link('Return to your atlas', '#atlas', 'text-link'));
@@ -147,15 +162,17 @@ function detail(record, snapshot) {
     ['District match', !classify ? 'Reference data unavailable' : record.district.status === 'assigned' ? 'Inside one district boundary' : record.district.status === 'ambiguous' ? 'Boundary match — needs review' : 'Outside the district reference dataset'],
   ];
   for (const [name, value] of facts) { const group = el('div'); group.append(el('dt', name), el('dd', value)); evidence.append(group); }
-  section.append(evidence, palettes(record.palette?.colors ?? []));
-  section.append(el('p', 'This preview keeps location metadata and optional colours. Original photographs are not stored here.', 'notice'));
+  section.append(palettes(record.palette?.colors ?? []));
+  const locationDetails = el('details');
+  locationDetails.append(el('summary', 'Location details'), evidence);
+  section.append(locationDetails);
   const form = el('form');
   const label = el('label', 'Your name for this memory'); label.htmlFor = 'place-label';
   const input = el('input'); input.id = 'place-label'; input.maxLength = 160; input.value = first?.correctedPlaceLabel ?? '';
   const noteLabel = el('label', 'A note to return to'); noteLabel.htmlFor = 'memory-note';
   const note = el('textarea'); note.id = 'memory-note'; note.maxLength = 4000; note.value = first?.note ?? '';
   const save = el('button', 'Save memory', 'primary'); save.type = 'submit';
-  form.append(label, input, noteLabel, note, el('p', 'Your label stays separate from the original coordinates and district match.', 'notice'), save);
+  form.append(label, input, noteLabel, note, save);
   form.addEventListener('input', () => { form.dataset.dirty = 'true'; });
   form.addEventListener('submit', async event => {
     event.preventDefault();
@@ -178,7 +195,7 @@ function detail(record, snapshot) {
   section.append(remove); main.append(section);
 }
 function you(snapshot) {
-  main.append(heading('Yours to keep.', 'Your memories remain under your control.'), el('p', `${count(snapshot.observations.length, 'location')} and ${count(snapshot.journalEntries.length, 'journal note')} saved on this browser.`));
+  main.append(heading('Yours to keep.'), el('p', `${count(snapshot.observations.length, 'location')} and ${count(snapshot.journalEntries.length, 'journal note')} saved on this browser.`));
   const download = link('Export your local journal', '#you', 'download');
   download.addEventListener('click', event => {
     if (exportURL) URL.revokeObjectURL(exportURL);
@@ -196,8 +213,8 @@ function you(snapshot) {
     }
   }
   const preview = el('details');
-  preview.append(el('summary', 'About this working preview'), el('p', 'This interface reads the existing journal saved on this browser and origin. Automatic phone photo-library access, hosted accounts and private cloud sync are still in development. No photo upload or background scan happens here.', 'notice'), link('Open the photo-import diagnostic', '/experiments/photo-import/index.html', 'download'));
-  main.append(preview);
+  preview.append(el('summary', 'Photo access & storage'), el('p', 'Locations, colours and notes stay in this browser. Original photographs are not stored here. Automatic photo-library access, accounts and cloud sync are still in development.', 'notice'));
+  main.append(preview, sourceNotice());
 }
 async function render(focus = false) {
   if (!ready) return;
@@ -210,6 +227,10 @@ async function render(focus = false) {
     const chapters = districtChapters(classified);
     const unassigned = classified.filter(item => !item.district?.milestoneDistrictId);
     const [route, id] = location.hash.slice(1).split('/');
+    const routeKey = location.hash || '#atlas';
+    const changedRoute = renderedRoute !== undefined && renderedRoute !== routeKey;
+    const previousMarks = new Map([...main.querySelectorAll('[data-cell]')].map(node => [node.dataset.cell, node.innerHTML]));
+    stopMotion();
     main.replaceChildren();
     if (!route || route === 'atlas') atlas(snapshot, chapters, unassigned);
     else if (route === 'chapters') collection(snapshot, chapters, unassigned);
@@ -218,10 +239,19 @@ async function render(focus = false) {
     else if (route === 'unassigned') main.append(link('← All chapters', '#chapters', 'back'), heading('Every memory belongs.', 'These locations do not yet have a confirmed district chapter.'), memoryRows(unassigned, snapshot));
     else if (route === 'you') you(snapshot);
     else missing();
-    for (const a of document.querySelectorAll('nav a')) {
+    const navigation = document.querySelector('.main-navigation');
+    for (const [index, a] of [...navigation.querySelectorAll('a')].entries()) {
       const active = a.hash === `#${!route ? 'atlas' : ['district', 'memory', 'unassigned'].includes(route) ? 'chapters' : route}`;
       if (active) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+      if (active) navigation.style.setProperty('--selected-tab', index);
     }
+    navigation.dataset.hasSelection = String(!!navigation.querySelector('[aria-current]'));
+    if (changedRoute) animate(main.querySelector('.intro'), [{ opacity: .6 }, { opacity: 1 }], { duration: 180, easing: 'cubic-bezier(.22,1,.36,1)' });
+    if (!changedRoute) {
+      const changedMarks = [...main.querySelectorAll('[data-cell]')].filter(node => previousMarks.get(node.dataset.cell) !== node.innerHTML);
+      changedMarks.forEach((node, index) => animate(node, [{ opacity: 0 }, { opacity: 1 }], { duration: 320, delay: Math.min(index * 12, 120), fill: 'backwards', easing: 'cubic-bezier(.22,1,.36,1)' }));
+    }
+    renderedRoute = routeKey;
     document.title = `${main.querySelector('h1')?.textContent ?? 'Your atlas'} · KOWLO`;
     if (focus) { main.focus(); window.scrollTo(0, 0); }
   } catch { status.textContent = 'Your local journal could not be read. Reload to try again.'; }

@@ -67,6 +67,7 @@ try {
   await page.screenshot({ path: `${evidence}/district-mobile.png`, fullPage: true });
   await page.locator(`a[href="#memory/${ids[0]}"]`).click();
   await page.locator('#memory-note').waitFor();
+  await page.getByText('Location details', { exact: true }).click();
   assert.match(await page.locator('dl').innerText(), /22.2819, 114.1588/);
   assert.match(await page.locator('dl').innerText(), /2026-09-06T18:30:00 · \+08:00/);
   const note = '<img src=x onerror=alert(1)> A harbour evening.';
@@ -104,7 +105,7 @@ try {
   checks.push('Cancel preserves memory; confirmed deletion removes its colours while preserving the remaining district and detached note; downloaded export reflects current saved data.');
   await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
   const reference = await page.evaluate(async () => {
-    const cache = await caches.open('kowlo-atlas-shell-v2');
+    const cache = await caches.open('kowlo-atlas-shell-v4');
     const response = await cache.match('/data/reference/hk-districts.geojson');
     const body = await response.text();
     await cache.put('/data/reference/hk-districts.geojson', new Response('{}'));
@@ -117,7 +118,7 @@ try {
   assert.equal(await page.locator('.memory-list li').count(), 3);
   checks.push('Corrupted offline reference fails the hash check and suppresses unverified district achievements without hiding any saved record.');
   await page.evaluate(async body => {
-    const cache = await caches.open('kowlo-atlas-shell-v2');
+    const cache = await caches.open('kowlo-atlas-shell-v4');
     await cache.put('/data/reference/hk-districts.geojson', new Response(body, { headers: { 'Content-Type': 'application/json' } }));
   }, reference);
   for (const width of [320,390,768,1440]) {
@@ -126,14 +127,53 @@ try {
       await go(route);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `${route} overflow at ${width}`);
       assert.equal(await page.locator('h1').count(), 1);
+      const nav = page.getByRole('navigation');
+      const bounds = await nav.boundingBox();
+      assert(bounds.x >= 24 && bounds.x + bounds.width <= width - 24, `Navigation fits at ${width}`);
+      assert.equal(bounds.height, 64);
+      for (const tab of await nav.getByRole('link').all()) assert((await tab.boundingBox()).height >= 48);
+      assert.equal(await nav.locator('[aria-current="page"]').count(), 1);
+      await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+      const footer = await page.locator('footer').boundingBox();
+      assert(footer.y + footer.height <= bounds.y, `Bottom content clears navigation: ${route} at ${width}`);
     }
   }
+  await go('atlas');
+  await page.getByRole('navigation').getByRole('link', { name: 'Atlas', exact: true }).focus();
+  await page.keyboard.press('Tab');
+  assert.equal(await page.evaluate(() => document.activeElement.textContent), 'Chapters');
+  assert.equal(await page.evaluate(() => getComputedStyle(document.activeElement).outlineStyle), 'solid');
+  await page.screenshot({ path: `${evidence}/navigation-keyboard.png` });
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(() => document.querySelector('nav [aria-current="page"]')?.textContent === 'Chapters');
+  for (const name of ['You', 'Atlas']) {
+    await page.getByRole('navigation').getByRole('link', { name, exact: true }).click();
+    await page.waitForFunction(label => document.querySelector('nav [aria-current="page"]')?.textContent === label, name);
+  }
+  checks.push('Floating navigation fits four widths with 48px targets; bottom content clears the bar on all five routes. Keyboard focus is visible and keyboard/pointer activation updates the selected destination.');
+  await go('unassigned');
   await page.keyboard.press('Tab');
   assert.equal(await page.evaluate(() => document.activeElement.textContent), 'Skip to your atlas');
   await page.keyboard.press('Enter');
   assert.equal(await page.evaluate(() => document.activeElement.id), 'main');
   assert.equal(await page.evaluate(() => location.hash), '#unassigned');
   checks.push('All five route types fit 320/390/768/1440px viewports; keyboard skip link moves focus into the main content.');
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await go('atlas');
+  for (const name of ['Chapters', 'You', 'Atlas']) {
+    await page.getByRole('navigation').getByRole('link', { name, exact: true }).click();
+    await page.waitForFunction(label => document.querySelector('nav [aria-current="page"]')?.textContent === label, name);
+  }
+  await page.waitForFunction(() => document.getAnimations().every(animation => animation.playState !== 'running'));
+  assert.equal(await page.evaluate(() => getComputedStyle(document.querySelector('nav'), '::before').transform), 'matrix(1, 0, 0, 1, 0, 0)');
+  await page.getByRole('navigation').getByRole('link', { name: 'You', exact: true }).click();
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.waitForFunction(() => document.getAnimations().every(animation => animation.playState !== 'running'));
+  assert.equal(await page.evaluate(() => getComputedStyle(document.querySelector('nav'), '::before').transitionDuration), '0s');
+  assert.equal(await page.locator('details[open]').count(), 0);
+  await page.getByText('Photo access & storage', { exact: true }).click();
+  assert.equal(await page.locator('details[open]').count(), 1);
+  checks.push('Rapid tab changes settle on the correct selection. Reduced motion cancels active effects and removes navigation transitions. Storage explanations remain available on demand.');
   assert.equal((await page.request.get(`${origin}/.git/config`)).status(), 404);
   assert.equal((await page.request.get(`${origin}/docs/FULL_PROJECT_PROMPT.md`)).status(), 404);
   assert.deepEqual(errors, []); assert.deepEqual(external, []); assert(requests.every(method => method === 'GET'));
