@@ -4,7 +4,8 @@
   "checks": [
     "Empty journal has zero districts and zero coloured marks; no false library permission flow.",
     "Four real IndexedDB records produce two distinct districts and two map cells; repeated coordinates do not inflate district totals; outside-viewport memory remains listed.",
-    "Atlas → chapters → district → memory navigation works; original coordinates and timezone survive; authored label and literal HTML note persist after reload.",
+    "Atlas \u2192 chapters \u2192 district \u2192 memory navigation works; original coordinates and timezone survive; authored label and literal HTML note persist after reload.",
+    "Retained notes open under You, remain editable after reload, survive cancelled deletion, and are removed only after confirmation without changing saved locations.",
     "Cancel preserves memory; confirmed deletion removes its colours while preserving the remaining district and detached note; downloaded export reflects current saved data.",
     "Corrupted offline reference fails the hash check and suppresses unverified district achievements without hiding any saved record.",
     "Floating navigation fits four widths with 48px targets; bottom content clears the bar on all five routes. Keyboard focus is visible and keyboard/pointer activation updates the selected destination.",
@@ -19,7 +20,8 @@
     "atlas-mobile.png",
     "atlas-desktop.png",
     "district-mobile.png",
-    "memory-mobile.png"
+    "memory-mobile.png",
+    "retained-note-mobile.png"
   ],
   "data": "Synthetic records in an isolated temporary browser. No personal photo library accessed."
 }

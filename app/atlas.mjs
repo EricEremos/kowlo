@@ -166,6 +166,18 @@ function detail(record, snapshot) {
   const locationDetails = el('details');
   locationDetails.append(el('summary', 'Location details'), evidence);
   section.append(locationDetails);
+  section.append(noteForm(first, record.id));
+  for (const extra of saved.slice(1)) section.append(el('p', extra.correctedPlaceLabel ?? 'Another note', 'eyebrow'), el('p', extra.note, 'note'));
+  const remove = el('button', 'Remove saved location', 'danger');
+  remove.addEventListener('click', async () => {
+    if (!confirm('Remove this saved location from this browser? Its journal notes will be kept under You. Original photographs and cloud data are not deleted.')) return;
+    remove.disabled = true;
+    try { await journal.deleteObservation(record.id); location.hash = '#you'; status.textContent = 'Location removed. Any journal notes are kept under You.'; }
+    catch { status.textContent = 'The location could not be removed. Try again.'; remove.disabled = false; }
+  });
+  section.append(remove); main.append(section);
+}
+function noteForm(first, observationId) {
   const form = el('form');
   const label = el('label', 'Your name for this memory'); label.htmlFor = 'place-label';
   const input = el('input'); input.id = 'place-label'; input.maxLength = 160; input.value = first?.correctedPlaceLabel ?? '';
@@ -176,21 +188,27 @@ function detail(record, snapshot) {
   form.addEventListener('input', () => { form.dataset.dirty = 'true'; });
   form.addEventListener('submit', async event => {
     event.preventDefault();
+    status.textContent = '';
     save.disabled = true;
     try {
-      await journal.putJournalEntry({ id: first?.id ?? crypto.randomUUID(), observationId: record.id, note: note.value, correctedPlaceLabel: input.value.trim() || null });
+      await journal.putJournalEntry({ id: first?.id ?? crypto.randomUUID(), observationId, note: note.value, correctedPlaceLabel: input.value.trim() || null });
       await render(); status.textContent = 'Memory saved on this browser.';
       document.querySelector('#memory-note')?.focus();
     } catch { status.textContent = 'This memory could not be saved. Your draft is still here; try again.'; save.disabled = false; }
   });
-  section.append(form);
-  for (const extra of saved.slice(1)) section.append(el('p', extra.correctedPlaceLabel ?? 'Another note', 'eyebrow'), el('p', extra.note, 'note'));
-  const remove = el('button', 'Remove saved location', 'danger');
+  return form;
+}
+function retainedNote(id, snapshot) {
+  const note = snapshot.journalEntries.find(item => item.id === id && item.observationId === null);
+  if (!note) return missing();
+  const section = el('section', undefined, 'detail');
+  section.append(link('← You', '#you', 'back'), heading(note.correctedPlaceLabel || 'A note, kept.'), noteForm(note, null));
+  const remove = el('button', 'Delete note', 'danger');
   remove.addEventListener('click', async () => {
-    if (!confirm('Remove this saved location from this browser? Its journal notes will be kept under You. Original photographs and cloud data are not deleted.')) return;
+    if (!confirm('Delete this note from this browser? This cannot be undone.')) return;
     remove.disabled = true;
-    try { await journal.deleteObservation(record.id); location.hash = '#you'; status.textContent = 'Location removed. Any journal notes are kept under You.'; }
-    catch { status.textContent = 'The location could not be removed. Try again.'; remove.disabled = false; }
+    try { await journal.deleteJournalEntry(note.id); location.hash = '#you'; status.textContent = 'Note deleted from this browser.'; }
+    catch { status.textContent = 'The note could not be deleted. Try again.'; remove.disabled = false; }
   });
   section.append(remove); main.append(section);
 }
@@ -208,7 +226,10 @@ function you(snapshot) {
   if (orphaned.length) {
     main.append(el('h2', 'Notes you kept.', 'section-space'));
     for (const note of orphaned) {
-      const article = el('article'); article.append(el('h3', note.correctedPlaceLabel || 'A saved note', 'section-space'), el('p', note.note, 'note'));
+      const article = el('article');
+      const title = el('h3', undefined, 'section-space');
+      title.append(link(note.correctedPlaceLabel || 'A saved note', `#note/${note.id}`, 'text-link'));
+      article.append(title, el('p', note.note, 'note'));
       main.append(article);
     }
   }
@@ -238,10 +259,11 @@ async function render(focus = false) {
     else if (route === 'memory') detail(classified.find(item => item.id === id), snapshot);
     else if (route === 'unassigned') main.append(link('← All chapters', '#chapters', 'back'), heading('Every memory belongs.', 'These locations do not yet have a confirmed district chapter.'), memoryRows(unassigned, snapshot));
     else if (route === 'you') you(snapshot);
+    else if (route === 'note') retainedNote(id, snapshot);
     else missing();
     const navigation = document.querySelector('.main-navigation');
     for (const [index, a] of [...navigation.querySelectorAll('a')].entries()) {
-      const active = a.hash === `#${!route ? 'atlas' : ['district', 'memory', 'unassigned'].includes(route) ? 'chapters' : route}`;
+      const active = a.hash === `#${!route ? 'atlas' : ['district', 'memory', 'unassigned'].includes(route) ? 'chapters' : route === 'note' ? 'you' : route}`;
       if (active) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
       if (active) navigation.style.setProperty('--selected-tab', index);
     }

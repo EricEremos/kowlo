@@ -20,7 +20,7 @@ const server = spawn('python3', ['-u', '-c', [
   "  if state == 'fail' and self.path == '/app/fonts/newsreader.ttf':",
   "   self.send_error(503); return",
   "  if state == 'update' and self.path == '/app/offline-worker.mjs':",
-  "   body = (ROOT / 'app/offline-worker.mjs').read_text().replace('v4', 'v5').encode()",
+  "   body = (ROOT / 'app/offline-worker.mjs').read_text().replace('v5', 'v6').encode()",
   "   self.send_response(200); self.send_header('Content-Type', 'text/javascript'); self.end_headers(); self.wfile.write(body); return",
   '  super().do_GET()',
   "server = ThreadingHTTPServer(('127.0.0.1', 0), partial(TestHandler, directory=str(ROOT)))",
@@ -62,7 +62,7 @@ try {
   await page.goto(`${origin}/app/index.html#atlas`); await ready();
   await page.waitForFunction(() => document.querySelector('#offline-status').textContent.includes('Ready offline'));
   const cachePaths = await page.evaluate(async () => {
-    const cache = await caches.open('kowlo-atlas-shell-v4');
+    const cache = await caches.open('kowlo-atlas-shell-v5');
     return (await cache.keys()).map(request => new URL(request.url).pathname).sort();
   });
   assert.equal(cachePaths.length, 18);
@@ -84,15 +84,15 @@ try {
   await page.waitForFunction(() => document.querySelector('#offline-status').textContent.includes('Save any edits'));
   assert.match(await page.locator('#offline-status').innerText(), /Save any edits/);
   assert.equal(await page.getByLabel('A note to return to').inputValue(), 'A draft kept through the update.');
-  assert(await page.evaluate(async () => (await caches.keys()).includes('kowlo-atlas-shell-v4')));
+  assert(await page.evaluate(async () => (await caches.keys()).includes('kowlo-atlas-shell-v5')));
   await page.getByRole('button', { name: 'Save memory', exact: true }).click();
   await page.waitForFunction(() => document.querySelector('#status').textContent.includes('Memory saved'));
   checks.push('An update waits while the atlas is open, preserves an unsaved note, and asks the user to save before closing tabs.');
   await page.close();
   page = await context.newPage(); observe(page);
   await page.goto(`${origin}/app/index.html#atlas`); await ready();
-  await page.waitForFunction(async () => !(await caches.keys()).includes('kowlo-atlas-shell-v4'));
-  assert.deepEqual((await page.evaluate(() => caches.keys())).sort(), ['hk-photo-diagnostic-shell-sentinel', 'kowlo-atlas-shell-v5']);
+  await page.waitForFunction(async () => !(await caches.keys()).includes('kowlo-atlas-shell-v5'));
+  assert.deepEqual((await page.evaluate(() => caches.keys())).sort(), ['hk-photo-diagnostic-shell-sentinel', 'kowlo-atlas-shell-v6']);
   assert.equal(await page.locator('.number').innerText(), '01 / 18');
   checks.push('After all atlas tabs close, the update activates and removes only its obsolete cache; saved journal and diagnostic cache survive.');
   await stopServer();
@@ -132,6 +132,19 @@ try {
   assert.equal(exported.observations.length, 0);
   assert.equal(exported.journalEntries[0].note, 'Written without a connection.');
   assert.equal(exported.journalEntries[0].observationId, null);
+  await page.locator('article a').click();
+  await page.getByLabel('A note to return to').fill('Retained and edited offline.');
+  await page.getByRole('button', { name: 'Save memory', exact: true }).click();
+  await page.waitForFunction(() => document.querySelector('#status').textContent.includes('Memory saved'));
+  await page.reload(); await ready();
+  assert.equal(await page.getByLabel('A note to return to').inputValue(), 'Retained and edited offline.');
+  page.once('dialog', dialog => dialog.accept());
+  await page.getByRole('button', { name: 'Delete note', exact: true }).click();
+  await page.waitForFunction(() => location.hash === '#you' && document.querySelector('h1').textContent === 'Yours to keep.');
+  await page.reload(); await ready();
+  assert.equal(await page.locator('article').count(), 0);
+  assert.match(await page.locator('main').innerText(), /0 locations and 0 journal notes/);
+  checks.push('Retained note edits and confirmed deletion survive full offline reloads with the server stopped.');
   await page.getByRole('navigation').getByRole('link', { name: 'Atlas', exact: true }).click();
   await page.reload(); await ready();
   assert.equal(await page.locator('.number').innerText(), '00 / 18');
@@ -147,7 +160,7 @@ try {
     return results;
   });
   assert.deepEqual(forbidden, Array(4).fill('unavailable'));
-  const retained = await page.evaluate(async () => (await (await caches.open('kowlo-atlas-shell-v5')).keys()).map(request => new URL(request.url).pathname).sort());
+  const retained = await page.evaluate(async () => (await (await caches.open('kowlo-atlas-shell-v6')).keys()).map(request => new URL(request.url).pathname).sort());
   assert.deepEqual(retained, cachePaths);
   assert.deepEqual(errors, []);
   checks.push('Cache remains exactly 18 static resources. Queries, private endpoints, POST and authenticated requests are not served from the cache. No page errors.');

@@ -6,6 +6,7 @@
     "An update waits while the atlas is open, preserves an unsaved note, and asks the user to save before closing tabs.",
     "After all atlas tabs close, the update activates and removes only its obsolete cache; saved journal and diagnostic cache survive.",
     "With the server confirmed stopped, a full reload restores the coloured atlas, district, fonts and original GPS; offline note edits survive reload.",
+    "Retained note edits and confirmed deletion survive full offline reloads with the server stopped.",
     "Offline deletion cancellation preserves the memory; confirmation removes its mark and district after reload. Actual JSON download retains the detached note.",
     "Cache remains exactly 18 static resources. Queries, private endpoints, POST and authenticated requests are not served from the cache. No page errors."
   ],

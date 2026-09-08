@@ -99,13 +99,30 @@ try {
   assert.equal(exported.observations.length, 3);
   assert.equal(exported.journalEntries[0].observationId, null);
   assert.equal(exported.journalEntries[0].note, note);
+  await page.locator('article a').click();
+  await page.getByLabel('A note to return to').fill('The harbour, remembered.');
+  assert.equal(await page.locator('nav [aria-current="page"]').innerText(), 'You');
+  await page.getByRole('button', { name: 'Save memory', exact: true }).click();
+  await page.waitForFunction(() => document.querySelector('#status').textContent.includes('Memory saved'));
+  await page.reload(); await ready();
+  assert.equal(await page.getByLabel('A note to return to').inputValue(), 'The harbour, remembered.');
+  page.once('dialog', dialog => dialog.dismiss());
+  await page.getByRole('button', { name: 'Delete note', exact: true }).click();
+  assert.equal(await page.getByLabel('A note to return to').inputValue(), 'The harbour, remembered.');
+  await page.screenshot({ path: `${evidence}/retained-note-mobile.png`, fullPage: true });
+  page.once('dialog', dialog => dialog.accept());
+  await page.getByRole('button', { name: 'Delete note', exact: true }).click();
+  await page.waitForFunction(() => location.hash === '#you' && document.querySelector('h1').textContent === 'Yours to keep.');
+  assert.equal(await page.locator('article').count(), 0);
+  assert.match(await page.locator('main').innerText(), /3 locations and 0 journal notes/);
+  checks.push('Retained notes open under You, remain editable after reload, survive cancelled deletion, and are removed only after confirmation without changing saved locations.');
   await go('atlas');
   assert.equal(await page.locator('.number').innerText(), '02 / 18');
   assert.equal(await page.locator('.mark[stroke="#9A6959"]').count(), 0);
   checks.push('Cancel preserves memory; confirmed deletion removes its colours while preserving the remaining district and detached note; downloaded export reflects current saved data.');
   await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
   const reference = await page.evaluate(async () => {
-    const cache = await caches.open('kowlo-atlas-shell-v4');
+    const cache = await caches.open('kowlo-atlas-shell-v5');
     const response = await cache.match('/data/reference/hk-districts.geojson');
     const body = await response.text();
     await cache.put('/data/reference/hk-districts.geojson', new Response('{}'));
@@ -118,7 +135,7 @@ try {
   assert.equal(await page.locator('.memory-list li').count(), 3);
   checks.push('Corrupted offline reference fails the hash check and suppresses unverified district achievements without hiding any saved record.');
   await page.evaluate(async body => {
-    const cache = await caches.open('kowlo-atlas-shell-v4');
+    const cache = await caches.open('kowlo-atlas-shell-v5');
     await cache.put('/data/reference/hk-districts.geojson', new Response(body, { headers: { 'Content-Type': 'application/json' } }));
   }, reference);
   for (const width of [320,390,768,1440]) {
@@ -178,7 +195,7 @@ try {
   assert.equal((await page.request.get(`${origin}/docs/FULL_PROJECT_PROMPT.md`)).status(), 404);
   assert.deepEqual(errors, []); assert.deepEqual(external, []); assert(requests.every(method => method === 'GET'));
   checks.push('No browser errors, external requests or non-GET requests; repository/configuration remain outside the local static allowlist.');
-  const result = { browser: process.env.ATLAS_BROWSER ?? 'chromium', result: 'PASS', checks, errors, externalRequests: external, screenshots: ['empty-mobile','atlas-mobile','atlas-desktop','district-mobile','memory-mobile'].map(name => `${name}.png`), data: 'Synthetic records in an isolated temporary browser. No personal photo library accessed.' };
+  const result = { browser: process.env.ATLAS_BROWSER ?? 'chromium', result: 'PASS', checks, errors, externalRequests: external, screenshots: ['empty-mobile','atlas-mobile','atlas-desktop','district-mobile','memory-mobile','retained-note-mobile'].map(name => `${name}.png`), data: 'Synthetic records in an isolated temporary browser. No personal photo library accessed.' };
   await writeFile(`${evidence}/${result.browser}-checks.json`, JSON.stringify(result, null, 2) + '\n');
   console.log(JSON.stringify(result, null, 2));
 } finally {

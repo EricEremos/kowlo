@@ -1,6 +1,6 @@
-# Automatic photo library: proposed scope amendment
+# Automatic photo library: approved scope amendment
 
-Status: user requested the automatic experience on 5 September 2026. The revised UX is authorized; adding native mobile delivery to the previously approved PWA scope awaits a concrete platform decision. The existing native Goal remains active and has not been replaced.
+Status: approved on 8 September 2026. The user explicitly chose “Yes: native phone apps + web companion.” Native iPhone and Android delivery is authorized alongside the installable web companion. The existing native Goal remains active; this amendment records the changed delivery scope.
 
 ## Product correction
 
@@ -28,7 +28,7 @@ Give a restrained reveal when a new district appears, a chapter that gains colou
 
 Figma includes a static district-collection concept with an explicitly illustrative palette. Optional local colour extraction now works in the browser diagnostic, including saved palettes and graceful HEIC decoder failure; see [local palette evidence](evidence/local-photo-palettes.md). Production thumbnail adapters, complex-photo palette quality, adaptive contrast and achievements still require implementation and device verification. District matching cannot improve original GPS accuracy.
 
-Recommended: retain the shared React/TypeScript interface and desktop web/PWA, and add native phone packages using a custom Capacitor bridge. iOS uses PhotoKit; Android uses MediaStore and local EXIF extraction. The native bridge exposes a bounded metadata stream and permission state, never photo bytes to cloud services. Capacitor packaging alone does not implement library scanning.
+Retain the existing shared JavaScript interface and desktop web/PWA, and add native phone packages with a bounded library bridge. iOS uses PhotoKit; Android uses MediaStore and local EXIF extraction. The native bridge exposes metadata and permission state, never photo bytes to cloud services. Packaging alone does not implement library scanning. Select the smallest verified bridge without requiring a frontend framework rewrite.
 
 A home-screen-installed website cannot acquire PhotoKit/MediaStore access by asking for browser location permission. A web directory picker grants a chosen filesystem directory on supported browsers; it is not permission to enumerate the phone's Photos library. Desktop web shows privately synchronized location records after sign-in and opt-in sync. A secondary web file/folder import may remain, but does not fulfill the requested automatic phone experience.
 
@@ -67,8 +67,8 @@ Primary sources checked 5 September 2026:
 - [MDN directory picker](https://developer.mozilla.org/en-US/docs/Web/API/Window/showDirectoryPicker): limited browser support and selected-directory access.
 - [Capacitor plugins](https://capacitorjs.com/docs/plugins): JavaScript-to-native interfaces for iOS and Android.
 
-## Approval question
+## Approved delivery scope
 
-Approve native phone apps sharing the web interface, together with the desktop web/PWA, so automatic photo-library scanning becomes the primary experience?
+Native iPhone and Android apps share the atlas and journal experience with the desktop web/PWA. Automatic photo-library scanning is the primary phone experience. The browser companion cannot promise the operating system's native photo-library permission.
 
-The approval is required because the original approved prompt explicitly specified a web app with user-selected files. It is a material delivery-platform change, not a repeated approval of routine design work.
+This approval resolves the material change from the original user-selected-file web scope. It does not authorize purchases, signing-account enrollment or public release. Physical-device permission, scanning and revocation evidence remains required before claiming the automatic experience is complete.
